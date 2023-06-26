@@ -3,14 +3,27 @@ import { useNavigate } from "react-router-dom"
 
 import "../App.css"
 import { setCredentials, logout } from "../store/slices/authSlice"
-import { useLoginMutation, useLogoutMutation } from "../store/slices/usersApliSlice"
+import { useRegisterMutation, useLoginMutation, useLogoutMutation } from "../store/slices/usersApliSlice"
 
 export const HomeScreen = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
+  const [registerApiCall] = useRegisterMutation()
   const [loginApiCall] = useLoginMutation()
   const [logoutApiCall] = useLogoutMutation()
+
+  const formData = { name: "Polash Ahmad", email: "dev.polashahmad@gmail.com", password: "polash123" }
+
+  const registerHandler = async () => {
+    try {
+      const response = await registerApiCall(formData).unwrap()
+      dispatch(setCredentials(response.data))
+      console.log(response)
+    } catch(error) {
+      console.log(error)
+    }
+  }
 
   const loginHandler = async () => {
     try {
@@ -37,12 +50,20 @@ export const HomeScreen = () => {
     <>
       <h1>Vite + React</h1>
       <div className="card">
+      <button
+          onClick={registerHandler}
+        >
+          Register
+        </button>
+        <br />
+        <br />
         <button
           onClick={loginHandler}
         >
           Login
         </button>
-        <p></p>
+        <br />
+        <br />
         <button
           onClick={logoutHandler}
         >
