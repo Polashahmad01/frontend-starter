@@ -47,16 +47,17 @@ export const HomeScreen = () => {
 
   return (
     <>
-      <h1>Vite + React</h1>
       <div className="card">
-      <button
+        <button
           onClick={registerHandler}
+          className="bg-primary rounded-full py-2 px-5 text-base font-normal cursor-pointer border border-solid border-transparent transition duration-25 hover:border-secondary"
         >
           Register
         </button>
         <br />
         <br />
         <button
+          className="bg-primary rounded-full py-2 px-5 text-base font-normal cursor-pointer border border-solid border-transparent transition duration-25 hover:border-secondary"
           onClick={loginHandler}
         >
           Login
@@ -64,6 +65,7 @@ export const HomeScreen = () => {
         <br />
         <br />
         <button
+          className="bg-primary rounded-full py-2 px-5 text-base font-normal cursor-pointer border border-solid border-transparent transition duration-25 hover:border-secondary"
           onClick={logoutHandler}
         >
           Logout
