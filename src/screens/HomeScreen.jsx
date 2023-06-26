@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
-import "../App.css"
 import { setCredentials, logout } from "../store/slices/authSlice"
 import { useRegisterMutation, useLoginMutation, useLogoutMutation } from "../store/slices/usersApliSlice"
 
