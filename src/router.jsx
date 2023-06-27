@@ -5,6 +5,7 @@ import { ErrorScreen } from "./screens/ErrorScreen"
 import { HomeScreen } from "./screens/HomeScreen"
 import { SigninScreen } from "./screens/SigninScreen"
 import { SignupScreen } from "./screens/SignupScreen"
+import { ProfileScreen } from "./screens/ProfileScreen"
 import { Private } from "./components/Private"
 
 export const useRouter = () => {
@@ -21,6 +22,10 @@ export const useRouter = () => {
             {
               index: true,
               element: <HomeScreen />
+            },
+            {
+              path: "profile",
+              element: <ProfileScreen />
             }
           ]
         },

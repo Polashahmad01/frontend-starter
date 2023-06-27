@@ -1,10 +1,15 @@
 import { NavLink } from "react-router-dom"
 import { useAppNavbar } from "./hooks/useAppNavbar"
-
-import avatarImgUrl from "../assets/images/avatar-image.jpeg"
+import avatarImgUrl from "../assets/images/default-profile-avatar.jpeg"
+import { ProfilePopup } from "./ProfilePopup"
 
 export const AppNavbar = () => {
-  const { userInfo } = useAppNavbar()
+  const { 
+    userInfo,
+    isModalOpen, 
+    modalOpenHandler,
+    modalCloseHandler 
+  } = useAppNavbar()
 
   return (
     <header>
@@ -44,6 +49,7 @@ export const AppNavbar = () => {
               <li>
                 <div
                   className="w-11 h-11 rounded-full border-4 border-double border-transparent hover:border-secondary"
+                  onClick={modalOpenHandler}
                 >
                   <img
                     className="rounded-full cursor-pointer w-full h-full object-cover"
@@ -52,6 +58,13 @@ export const AppNavbar = () => {
                   />
                 </div>
               </li>
+              <div>
+                <ProfilePopup
+                  isModalOpen={isModalOpen}
+                  onModalCloseHandler={modalCloseHandler}
+                  userInfo={userInfo}
+                />
+              </div>
             </>)}
           </ul>
         </nav>
