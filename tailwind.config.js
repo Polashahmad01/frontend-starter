@@ -8,7 +8,8 @@ export default {
     extend: {
       colors: {
         "primary": "#242424",
-        "secondary": "#646cff"
+        "secondary": "#646cff",
+        "main": "#181818"
       },
       borderColor: {
         "primary": "#242424",
