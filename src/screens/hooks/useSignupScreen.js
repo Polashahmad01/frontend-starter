@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { setCredentials } from "../../store/slices/authSlice"
 import { useRegisterMutation } from "../../store/slices/usersApliSlice"
+import { useNotification } from "../../hooks/useNotification.js"
 
 const user = {
   name: "",
@@ -15,22 +16,26 @@ export const useSignupScreen = () => {
   const { register, handleSubmit, getValues, formState: { errors } } = useForm(user)
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const { notifySuccess, notifyError } = useNotification()
 
-  const [registerUserApiCall] = useRegisterMutation()
+  const [registerUserApiCall, { isLoading, isSuccess }] = useRegisterMutation()
 
   const onSubmit = async (userData) => {
     try {
       const response = await registerUserApiCall(userData).unwrap()
       dispatch(setCredentials(response.data))
+      notifySuccess("Successfully signed In")
       navigate("/")
     } catch(error) {
-      console.log(error)
+      notifyError(error.data.error)
     }
   }
 
   return {
-    register,
     errors,
+    isLoading,
+    isSuccess,
+    register,
     getValues,
     handleSubmit,
     onSubmit

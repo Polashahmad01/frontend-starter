@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 import { useSignupScreen } from "./hooks/useSignupScreen"
 
 export const SignupScreen = () => {
-  const { register, getValues, errors, handleSubmit, onSubmit } = useSignupScreen()
+  const { isLoading, isSuccess, errors, register, getValues, handleSubmit, onSubmit } = useSignupScreen()
 
   return (
     <div className="flex justify-center items-center">
@@ -14,7 +14,7 @@ export const SignupScreen = () => {
         <div className="flex flex-col mb-4">
           <label htmlFor="name" className="mb-2 font-light">Name</label>
           <input
-            className="py-2 px-3 rounded-md bg-main border border-transparent appearance-none leading-normal focus:outline-none focus:shadow-outline focus:border-secondary"
+            className="py-2 px-3 text-sm rounded-md bg-main border border-transparent appearance-none leading-normal focus:outline-none focus:shadow-outline focus:border-secondary"
             type="text"
             {...register("name", {
               validate: {
@@ -27,7 +27,7 @@ export const SignupScreen = () => {
         <div className="flex flex-col mb-4">
           <label htmlFor="email" className="mb-2 font-light">Email</label>
           <input
-            className="py-2 px-3 rounded-md bg-main border border-transparent appearance-none leading-normal focus:outline-none focus:shadow-outline focus:border-secondary"
+            className="py-2 px-3 text-sm rounded-md bg-main border border-transparent appearance-none leading-normal focus:outline-none focus:shadow-outline focus:border-secondary"
             type="email"
             {...register("email", {
               required: "Email is required",
@@ -44,7 +44,7 @@ export const SignupScreen = () => {
           <div className="flex flex-col">
             <label htmlFor="password" className="mb-2 font-light">Password</label>
             <input
-              className="py-2 px-3 rounded-md bg-main border border-transparent appearance-none leading-normal focus:outline-none focus:shadow-outline focus:border-secondary"
+              className="py-2 px-3 text-sm rounded-md bg-main border border-transparent appearance-none leading-normal focus:outline-none focus:shadow-outline focus:border-secondary"
               type="password"
               {...register("password", {
                 required: "Password is required",
@@ -59,7 +59,7 @@ export const SignupScreen = () => {
           <div className="flex flex-col">
             <label htmlFor="repeatPassword" className="mb-2 font-light">Repeat password</label>
             <input
-              className="py-2 px-3 rounded-md bg-main border border-transparent appearance-none leading-normal focus:outline-none focus:shadow-outline focus:border-secondary"
+              className="py-2 px-3 text-sm rounded-md bg-main border border-transparent appearance-none leading-normal focus:outline-none focus:shadow-outline focus:border-secondary"
               type="password"
               {...register("repeatPassword", {
                 required: "Repeat password is required",
@@ -77,7 +77,12 @@ export const SignupScreen = () => {
           </div>
         </div>
         <div className="flex mb-4">
-          <button className="w-full bg-black font-medium py-2 px-3 rounded-md border border-transparent hover:border-secondary">Create account</button>
+          <button 
+            className="w-full bg-black font-medium py-2 px-3 rounded-md border border-transparent hover:border-secondary"
+            disabled={isLoading}
+          >
+            {!isSuccess ? "Create account" : "Done"}
+          </button>
         </div>
         <div className="flex justify-center items-center">
           <p className=" font-light">
