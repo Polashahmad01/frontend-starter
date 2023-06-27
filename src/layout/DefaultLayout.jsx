@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom"
 
 import { AppNavbar } from "../components/AppNavbar"
+import { AppFooter } from "../components/AppFooter"
 
 export const DefaultLayout = () => {
 
@@ -10,7 +11,9 @@ export const DefaultLayout = () => {
       <main className="container mx-auto px-4">
         <Outlet />
       </main>
-      <h1>Footer</h1>
+      <div className="container mx-auto px-4">
+        <AppFooter />
+      </div>
     </div>
   )
 }
