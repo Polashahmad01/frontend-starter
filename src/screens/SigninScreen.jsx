@@ -1,76 +1,67 @@
-import { useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom"
-
-import { setCredentials, logout } from "../store/slices/authSlice"
-import { useRegisterMutation, useLoginMutation, useLogoutMutation } from "../store/slices/usersApliSlice"
+import { Link } from "react-router-dom"
+import { useSigninScreen } from "./hooks/useSigninScreen"
 
 export const SigninScreen = () => {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-
-  const [registerApiCall] = useRegisterMutation()
-  const [loginApiCall] = useLoginMutation()
-  const [logoutApiCall] = useLogoutMutation()
-
-  const formData = { name: "Polash Ahmad", email: "dev.polashahmad@gmail.com", password: "polash123" }
-
-  const registerHandler = async () => {
-    try {
-      const response = await registerApiCall(formData).unwrap()
-      dispatch(setCredentials(response.data))
-      console.log(response)
-    } catch(error) {
-      console.log(error)
-    }
-  }
-
-  const loginHandler = async () => {
-    try {
-      const response = await loginApiCall().unwrap()
-      dispatch(setCredentials(response.data))
-      console.log(response)
-    } catch(error) {
-      console.log(error)
-    }
-  }
-
-  const logoutHandler = async () => {
-    try {
-      const response = await logoutApiCall().unwrap()
-      dispatch(logout())
-      navigate("/signin")
-      console.log(response)
-    } catch(error) {
-      console.log(error)
-    }
-  }
+  const { errors, isLoading, isSuccess, register, handleSubmit, onSubmit } = useSigninScreen()
 
   return (
-    <>
-      <div className="card">
-        <button
-          onClick={registerHandler}
-          className="bg-primary rounded-full py-2 px-5 text-base font-normal cursor-pointer border border-solid border-transparent transition duration-25 hover:border-secondary"
-        >
-          Register
-        </button>
-        <br />
-        <br />
-        <button
-          className="bg-primary rounded-full py-2 px-5 text-base font-normal cursor-pointer border border-solid border-transparent transition duration-25 hover:border-secondary"
-          onClick={loginHandler}
-        >
-          Login
-        </button>
-        <br />
-        <br />
-        <button
-          className="bg-primary rounded-full py-2 px-5 text-base font-normal cursor-pointer border border-solid border-transparent transition duration-25 hover:border-secondary"
-          onClick={logoutHandler}
-        >
-          Logout
-        </button>
-      </div>
-    </>
+    <div className="flex justify-center items-center">
+      <form
+        className="bg-primary rounded-lg py-8 px-6"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <h1 className="text-center mb-4 text-base font-semibold sm:text-lg">Login to a account to get started</h1>
+        <div className="flex flex-col mb-4">
+          <label htmlFor="email" className="mb-2 font-light">Email</label>
+          <input
+            className="py-2 px-3 text-sm rounded-md bg-main border border-transparent appearance-none leading-normal focus:outline-none focus:shadow-outline focus:border-secondary"
+            type="email"
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
+                message: "Invalid email address"
+              }
+            })}
+          />
+          {errors?.email?.type === "required" && <span className=" text-sm mt-2 text-red-600">{errors?.email?.message}</span>}
+          {errors?.email?.type === "pattern" && <span className=" text-sm mt-2 text-red-600">{errors?.email?.message}</span>}
+        </div>
+        <div className="flex flex-col mb-4">
+          <label htmlFor="password" className="mb-2 font-light">Password</label>
+          <input
+            className="py-2 px-3 text-sm rounded-md bg-main border border-transparent appearance-none leading-normal focus:outline-none focus:shadow-outline focus:border-secondary"
+            type="password"
+            {...register("password", {
+              required: "Password is required",
+              validate: {
+                minLength: value => value.length > 5 || "At least 6 characters long"
+              }
+            })}
+          />
+          {errors?.password?.type === "required" && <span className=" text-sm mt-2 text-red-600">{errors?.password?.message}</span>}
+          {errors?.password?.type === "minLength" && <span className=" text-sm mt-2 text-red-600">{errors?.password?.message}</span>}
+        </div>
+        <div className="flex mb-4">
+          <button 
+            className="w-full bg-black font-medium py-2 px-3 rounded-md border border-transparent hover:border-secondary"
+            disabled={isLoading}
+          >
+            {!isSuccess ? "Sign In" : "Done"}
+          </button>
+        </div>
+        <div className="flex justify-center items-center">
+          <p className=" font-light">
+            Don't have an account? &nbsp;
+            <Link
+              to={"/signup"}
+              className="transition-colors hover:text-secondary"
+            >
+              Sign Up
+            </Link>
+          </p>
+        </div>
+      </form>
+    </div>
   )
 }
