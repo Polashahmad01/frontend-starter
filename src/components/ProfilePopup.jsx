@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 import ReactModal from 'react-modal'
 import { CgProfile } from "react-icons/cg"
 import { FiLogOut } from "react-icons/fi"
+import { useSignOut } from '../hooks/useSignOut'
 ReactModal.setAppElement("#root")
 
 const customStyles = {
@@ -24,6 +25,7 @@ const customStyles = {
 export const ProfilePopup = ({ isModalOpen, onModalCloseHandler, userInfo }) => {
   const { name, email } = userInfo
   const profileEmail = email.length >= 20 ? email.split(".com")[0].concat("...") : email
+  const { logoutHandler } = useSignOut()
 
   return (
     <ReactModal
@@ -51,7 +53,8 @@ export const ProfilePopup = ({ isModalOpen, onModalCloseHandler, userInfo }) => 
         <hr />
         <div className="mb-2 pt-2">
           <div
-            className="flex items-center gap-4 py-2 px-6 hover:bg-neutral-700 hover:text-secondary"
+            className="flex items-center cursor-pointer gap-4 py-2 px-6 hover:bg-neutral-700 hover:text-secondary"
+            onClick={logoutHandler}
           >
             <FiLogOut
               size="1.5em"
