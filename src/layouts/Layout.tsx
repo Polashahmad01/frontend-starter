@@ -2,6 +2,10 @@ import { Outlet } from "react-router";
 
 export default function Layout() {
   return (
-    <Outlet />
+    <div className="min-h-screen">
+      <main className="container mx-auto">
+        <Outlet />
+      </main>
+    </div>
   )
 }
