@@ -2,9 +2,8 @@ import { Outlet } from "react-router";
 
 export default function AuthLayout() {
   return (
-    <main>
-      <p>Auth Module</p>
-      <div>
+    <main className="min-h-screen">
+      <div className="container mx-auto">
         <Outlet />
       </div>
     </main>
