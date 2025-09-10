@@ -8,7 +8,7 @@ export default function NotFoundPage({
   links = [
     {
       label: "Take Me Home",
-      href: "/"
+      href: "/app"
     },
     {
       label: "Go Back",
