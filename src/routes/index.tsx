@@ -1,5 +1,5 @@
 
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router";
 import Layout from "../layouts/Layout";
 import AuthLayout from "../layouts/AuthLayout";
 import HomePage from "../pages/HomePage";
@@ -23,22 +23,44 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
+    element: <Navigate to="/login" replace />
+  },
+  {
+    path: "/join",
     element: <AuthLayout />,
     children: [
       {
-        path: "join",
+        index: true,
         element: <RegisterPage />
-      },
+      }
+    ]
+  },
+  {
+    path: "/login",
+    element: <AuthLayout />,
+    children: [
       {
-        path: "login",
+        index: true,
         element: <LoginPage />
-      },
+      }
+    ]
+  },
+  {
+    path: "/forgot-password",
+    element: <AuthLayout />,
+    children: [
       {
-        path: "forgot-password",
+        index: true,
         element: <ForgotPasswordPage />
-      },
+      }
+    ]
+  },
+  {
+    path: "/reset-password",
+    element: <AuthLayout />,
+    children: [
       {
-        path: "reset-password",
+        index: true,
         element: <ResetPasswordPage />
       }
     ]
