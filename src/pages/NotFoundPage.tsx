@@ -7,7 +7,7 @@ export default function NotFoundPage({
   message = "This page seems to be still in development. Our engineering team is probably working on something amazing here!",
   links = [
     {
-      label: "Take Me Home",
+      label: "Home",
       href: "/app"
     },
     {
@@ -17,28 +17,29 @@ export default function NotFoundPage({
   ]
 }: NotFoundPageProps) {
   return (
-    <section className="min-h-screen flex items-center justify-center">
-      <div className="container mx-auto flex flex-col items-center text-center px-6 max-w-2xl">
-        <div className="mb-2">
-          <h1 className="text-3xl font-bold leading-tight tracking-normal sm:text-4xl md:text-5xl lg:text-7xl">{errorCode}</h1>
-        </div>
-        <div className="mb-4">
-          <h2 className="text-lg font-bold leading-tight tracking-normal sm:text-xl md:text-2xl lg:text-3xl">{title}</h2>
-        </div>
-        <div className="mb-6">
-          <p className="text-base leading-tight tracking-normal sm:text-lg">{message}</p>
-        </div>
-    
-        <div className="flex gap-4">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              to={link.href}
-              className="text-base leading-tight tracking-normal py-2.5 px-4 border rounded-lg hover:bg-black hover:text-white transition-colors duration-200 ease-in-out"
-              >
-              {link.label}
-            </Link>
-          ))}
+    <section className="container mx-auto px-6 py-6 h-screen">
+      <div className="grid place-items-center h-full">
+        <div className="flex flex-col items-center text-center">
+          <div className="mb-4">
+            <h1 className="text-xl font-bold leading-none tracking-normal md:text-3xl lg:text-4xl lg:max-w-5/6 xl:text-5xl 2xl:text-6xl">{errorCode}</h1>
+          </div>
+          <div className="mb-2">
+            <h2 className="text-sm font-bold leading-tight tracking-normal sm:text-base md:text-xl">{title}</h2>
+          </div>
+          <div className="mb-4">
+            <p className="text-[13px] leading-tight tracking-normal max-w-72 sm:max-w-80 md:max-w-112 sm:text-sm md:text-base">{message}</p>
+          </div>
+          <div className="flex gap-4 w-full sm:w-2/3">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="text-[13px] sm:text-sm w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center gap-4 bg-[#f3f3f3] hover:bg-[#fafafa]"
+                >
+                {link.label}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </section>
