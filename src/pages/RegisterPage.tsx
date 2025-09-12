@@ -2,80 +2,21 @@ import { Link } from "react-router";
 import { FaGoogle, FaApple } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { GoZap } from "react-icons/go";
+import JoinTestimonial from "../components/JoinTestimonial";
 
 export default function RegisterPage() {
   return (
     <section className="grid place-items-center h-full md:grid-cols-2">
-
       <div className="hidden md:block">
-        <div className="bg-[#f3f3f3] rounded-3xl flex items-center justify-center px-4 py-4">
-          <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
-
-            <div className="p-4 border border-[#00000014] rounded-[20px] flex flex-col gap-4">
-              <div className="flex items-center gap-2">
-                <img className="h-9 w-9 rounded-full" src="https://tattoo.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FreviewUser.b1603bfc.webp&w=96&q=75" alt="reviewUser" />
-                <div className="flex flex-col">
-                  <h6 className="text-sm">Ink Studio</h6>
-                  <div className="flex items-center">
-                    <svg className="w-4 h-4 text-warning-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
-                    <svg className="w-4 h-4 text-warning-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
-                    <svg className="w-4 h-4 text-warning-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
-                  </div>
-                </div>
-              </div>
-              <p className="text-[13px]">I love this app! I use it to show my design team examples of concepts. 🔥🔥</p>
-            </div>
-
-            <div className="p-4 border border-[#00000014] rounded-[20px] flex flex-col gap-4">
-              <div className="flex items-center gap-2">
-                <img className="h-9 w-9 rounded-full object-cover" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=350&fit=crop&crop=face" alt="reviewUser" />
-                <div className="flex flex-col">
-                  <h6 className="text-sm">Jacks Art</h6>
-                  <div className="flex items-center">
-                    <svg className="w-4 h-4 text-warning-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
-                    <svg className="w-4 h-4 text-warning-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
-                    <svg className="w-4 h-4 text-warning-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
-                  </div>
-                </div>
-              </div>
-              <p className="text-[13px]">Very easy to use and quality product arrives quickly. Great value for the service.</p>
-            </div>
-
-            <div className="p-4 border border-[#00000014] rounded-[20px] flex flex-col gap-4">
-              <div className="flex items-center gap-2">
-                <img className="h-9 w-9 rounded-full object-cover" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=350&fit=crop&crop=face" alt="reviewUser" />
-                <div className="flex flex-col">
-                  <h6 className="text-sm">Jacks Art</h6>
-                  <div className="flex items-center">
-                    <svg className="w-4 h-4 text-warning-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
-                    <svg className="w-4 h-4 text-warning-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
-                    <svg className="w-4 h-4 text-warning-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
-                  </div>
-                </div>
-              </div>
-              <p className="text-[13px]">Very easy to use and quality product arrives quickly. Great value for the service.</p>
-            </div>
-
-            <div className="p-4 border border-[#00000014] rounded-[20px] flex flex-col gap-4">
-              <div className="flex items-center gap-2">
-                <img className="h-9 w-9 rounded-full object-cover" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=350&fit=crop&crop=face" alt="reviewUser" />
-                <div className="flex flex-col">
-                  <h6 className="text-sm">Jacks Art</h6>
-                  <div className="flex items-center">
-                    <svg className="w-4 h-4 text-warning-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
-                    <svg className="w-4 h-4 text-warning-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
-                    <svg className="w-4 h-4 text-warning-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
-                  </div>
-                </div>
-              </div>
-              <p className="text-[13px]">Very easy to use and quality product arrives quickly. Great value for the service.</p>
-            </div>
-
+        <div className="bg-[#f3f3f3] rounded-3xl flex items-center justify-center px-4 py-4 overflow-hidden md:h-96">
+          <div className="animate-scroll-up flex flex-col gap-4">
+            {Array.from({ length: 8 }).map((_, index) => (
+              <JoinTestimonial key={index} />
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Register Area */}
       <div className="flex flex-col items-center justify-center">
         <div className="w-20 h-20 mb-10 flex justify-center items-center rounded-2xl border border-[rgba(0,0,0,0.2)] bg-[rgba(0,0,0,0.2)] animate-pulse delay-100">
           <GoZap size={40} className="animate-pulse" />

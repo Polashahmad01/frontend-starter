@@ -4,3 +4,16 @@
 @theme {
   --font-family-poppins: "Poppins" "sans-serif";
 }
+
+.animate-scroll-up {
+  animation: scroll-up 6s linear infinite;
+}
+
+@keyframes scroll-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
