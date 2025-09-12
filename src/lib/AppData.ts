@@ -6,7 +6,7 @@ export const notFoundPagePropsData: NotFoundPageProps = {
   message: "This page seems to be still in development. Our engineering team is probably working on something amazing here!",
   links: [
     {
-      label: "Take Me Home",
+      label: "Home",
       href: "/app"
     },
     {
