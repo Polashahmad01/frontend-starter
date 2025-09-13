@@ -7,3 +7,9 @@ export interface NotFoundPageProps {
     href: string;
   }[];
 }
+
+export interface CustomerTestimonialProps {
+  title: string;
+  rating: number;
+  testimonial: string;
+}
