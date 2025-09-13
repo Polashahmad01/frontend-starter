@@ -2,18 +2,14 @@ import { Link } from "react-router";
 import { FaGoogle, FaApple } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { GoZap } from "react-icons/go";
-import JoinTestimonial from "../components/JoinTestimonial";
+import MarqueeEffect from "../components/MarqueeEffect";
 
 export default function RegisterPage() {
   return (
     <section className="grid place-items-center h-full md:grid-cols-2">
       <div className="hidden md:block">
-        <div className="bg-[#f3f3f3] rounded-3xl flex items-center justify-center px-4 py-4 overflow-hidden md:h-96">
-          <div className="animate-scroll-up flex flex-col gap-4">
-            {Array.from({ length: 8 }).map((_, index) => (
-              <JoinTestimonial key={index} />
-            ))}
-          </div>
+        <div className="bg-[#f3f3f3] rounded-3xl flex items-center justify-center px-4 py-4 overflow-hidden md:h-96 md:w-90 xl:w-[450px]">
+          <MarqueeEffect />
         </div>
       </div>
 
