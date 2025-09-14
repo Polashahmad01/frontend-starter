@@ -8,6 +8,8 @@ import LoginPage from "../pages/LoginPage";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import ResetPasswordPage from "../pages/ResetPasswordPage";
 import NotFoundPage from "../pages/NotFoundPage";
+import TermsOfUsePage from "../pages/TermsOfUsePage";
+import PrivacyPolicyPage from "../pages/PrivacyPolicyPage";
 import { notFoundPagePropsData } from "../lib/AppData";
 
 const router = createBrowserRouter([
@@ -66,9 +68,29 @@ const router = createBrowserRouter([
     ]
   },
   {
+    path: "/terms-of-use",
+    element: <AuthLayout />,
+    children: [
+      {
+        index: true,
+        element: <TermsOfUsePage />
+      }
+    ]
+  },
+  {
+    path: "/privacy-policy",
+    element: <AuthLayout />,
+    children: [
+      {
+        index: true,
+        element: <PrivacyPolicyPage />
+      }
+    ]
+  },
+  {
     path: "*",
     element: <NotFoundPage {...notFoundPagePropsData} />
-  }
+  },
 ]);
 
 export default function AppRouter() {
