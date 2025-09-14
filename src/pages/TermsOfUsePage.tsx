@@ -1,15 +1,19 @@
 export default function TermsOfUsePage() {
   return (
     <article>
-      <h1>Terms and Conditions</h1>
-      <p>Welcome to FrontEnd Starter!</p>
+      <h1 className="text-xl font-bold leading-none tracking-normal mb-4 opacity-80 md:text-3xl lg:text-4xl lg:max-w-5/6 xl:text-5xl 2xl:text-6xl">
+        Terms and Conditions
+      </h1>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
+        Welcome to FrontEnd Starter!
+      </p>
 
-      <p>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         By accessing this website we assume you accept these terms and
         conditions. Do not continue to use TattooDesignPro if you do not agree
         to take all of the terms and conditions stated on this page.
       </p>
-      <p>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         The following terminology applies to these Terms and Conditions, Privacy
         Statement and Disclaimer Notice and all Agreements: &quot;Client&quot;,
         &quot;You&quot; and &quot;Your&quot; refers to you, the person log on
@@ -27,13 +31,12 @@ export default function TermsOfUsePage() {
         interchangeable and therefore as referring to same.
       </p>
 
-      <h2>Cookies</h2>
-      <p>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">Cookies</h2>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         We employ the use of cookies. By accessing TattooDesignPro, you agreed
         to use cookies in agreement with the Privacy Policy of our app.
       </p>
-      <p>
-        {" "}
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         Most interactive websites use cookies to let us retrieve the user&apos;s
         details for each visit. Cookies are used by our website to enable the
         functionality of certain areas to make it easier for people visiting our
@@ -41,27 +44,27 @@ export default function TermsOfUsePage() {
         cookies.
       </p>
 
-      <h2>License</h2>
-      <p>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">License</h2>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         Unless otherwise stated, TATTOO DESIGN PRO LTD and/or its licensors own
         the intellectual property rights for all material on TattooDesignPro.
         All intellectual property rights are reserved. You may access this from
         TattooDesignPro for your own personal use subjected to restrictions set
         in these terms and conditions.
       </p>
-      <p>You must not:</p>
-      <ul>
-        <li>Republish material from TattooDesignPro</li>
-        <li>Sell, rent or sub-license material from TattooDesignPro</li>
-        <li>Reproduce, duplicate or copy material from TattooDesignPro</li>
-        <li>Redistribute content from TattooDesignPro</li>
+      <p className="text-sm font-light leading-6 opacity-80 lg:w-10/12">You must not:</p>
+      <ul className="list-disc text-sm font-light mb-4 lg:w-10/12">
+        <li className="ml-8 py-1 italic">Republish material from TattooDesignPro.</li>
+        <li className="ml-8 py-1 italic">Sell, rent or sub-license material from TattooDesignPro.</li>
+        <li className="ml-8 py-1 italic">Reproduce, duplicate or copy material from TattooDesignPro.</li>
+        <li className="ml-8 py-1 italic">Redistribute content from TattooDesignPro.</li>
       </ul>
 
-      <p>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         This Agreement shall begin on the date hereof. Our Terms and Conditions
         were created with the help of the Terms and Conditions Generator.
       </p>
-      <p>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         Parts of this website offer an opportunity for users to post and
         exchange opinions and information in certain areas of the website.
         TATTOO DESIGN PRO LTD does not filter, edit, publish or review Comments
@@ -74,51 +77,51 @@ export default function TermsOfUsePage() {
         any use of and/or posting of and/or appearance of the Comments on this
         website.
       </p>
-      <p>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         TATTOO DESIGN PRO LTD reserves the right to monitor all Comments and to
         remove any Comments which can be considered inappropriate, offensive or
         causes breach of these Terms and Conditions.
       </p>
-      <p>You warrant and represent that:</p>
-      <ul>
-        <li>
+      <p className="text-sm font-light leading-6 opacity-80 lg:w-10/12">You warrant and represent that:</p>
+      <ul className="list-disc text-sm font-light mb-4 lg:w-10/12">
+        <li className="ml-8 py-1 italic">
           You are entitled to post the Comments on our website and have all
           necessary licenses and consents to do so.
         </li>
-        <li>
+        <li className="ml-8 py-1 italic">
           The Comments do not invade any intellectual property right, including
           without limitation copyright, patent or trademark of any third party.
         </li>
-        <li>
+        <li className="ml-8 py-1 italic">
           The Comments do not contain any defamatory, libelous, offensive,
           indecent or otherwise unlawful material which is an invasion of
           privacy.
         </li>
-        <li>
+        <li className="ml-8 py-1 italic">
           The Comments will not be used to solicit or promote business or custom
           or present commercial activities or unlawful activity.
         </li>
       </ul>
-      <p>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         You hereby grant TATTOO DESIGN PRO LTD a non-exclusive license to use,
         reproduce, edit and authorize others to use, reproduce and edit any of
         your Comments in any and all forms, formats or media.
       </p>
 
-      <h2>Hyperlinking to our Content</h2>
-      <p>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">Hyperlinking to our Content</h2>
+      <p className="text-sm font-light leading-6 opacity-80 lg:w-10/12">
         The following organizations may link to our Website without prior
         written approval:
       </p>
-      <ul>
-        <li>Government agencies.</li>
-        <li>Search engines.</li>
-        <li>News organizations.</li>
-        <li>
+      <ul className="list-disc text-sm font-light mb-4 lg:w-10/12">
+        <li className="ml-8 py-1 italic">Government agencies.</li>
+        <li className="ml-8 py-1 italic">Search engines.</li>
+        <li className="ml-8 py-1 italic">News organizations.</li>
+        <li className="ml-8 py-1 italic">
           Online directory distributors may link to our Website in the same
           manner as they hyperlink to the Websites of other listed businesses.
         </li>
-        <li>
+        <li className="ml-8 py-1 italic">
           System wide Accredited Businesses except soliciting non-profit
           organizations, charity shopping malls, and charity fundraising groups
           which may not hyperlink to our Web site.
