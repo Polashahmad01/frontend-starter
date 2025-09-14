@@ -1,18 +1,20 @@
 export default function PrivacyPolicyPage() {
   return (
     <article>
-      <h1>Privacy Policy</h1>
-      <p>
+      <h1 className="text-xl font-bold leading-none tracking-normal mb-4 opacity-80 md:text-3xl lg:text-4xl lg:max-w-5/6 xl:text-5xl 2xl:text-6xl">
+        Privacy Policy
+      </h1>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         At TattooDesignPro, accessible from https://tattoodesignpro.com, one of
         our main priorities is the privacy of our visitors. This Privacy Policy
         document contains types of information that is collected and recorded by
         TattooDesignPro and how we use it.
       </p>
-      <p>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         If you have additional questions or require more information about our
         Privacy Policy, do not hesitate to contact us.
       </p>
-      <p>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         This Privacy Policy applies only to our online activities and is valid
         for visitors to our website with regards to the information that they
         shared and/or collect in TattooDesignPro. This policy is not applicable
@@ -20,49 +22,49 @@ export default function PrivacyPolicyPage() {
         website.
       </p>
 
-      <h2>Consent</h2>
-      <p>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">Consent</h2>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         By using our website, you hereby consent to our Privacy Policy and agree
         to its terms.
       </p>
 
-      <h2>Information we collect</h2>
-      <p>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">Information we collect</h2>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         The personal information that you are asked to provide, and the reasons
         why you are asked to provide it, will be made clear to you at the point
         we ask you to provide your personal information.
       </p>
-      <p>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         If you contact us directly, we may receive additional information about
         you such as your name, email address, phone number, the contents of the
         message and/or attachments you may send us, and any other information
         you may choose to provide.
       </p>
-      <p>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         When you register for an Account, we may ask for your contact
         information, including items such as name, company name, address, email
         address, and telephone number.
       </p>
 
-      <h2>How we use your information</h2>
-      <p>We use the information we collect in various ways, including to:</p>
-      <ul>
-        <li>Provide, operate, and maintain our website</li>
-        <li>Improve, personalize, and expand our website</li>
-        <li>Understand and analyze how you use our website</li>
-        <li>Develop new products, services, features, and functionality</li>
-        <li>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">How we use your information</h2>
+      <p className="text-sm font-light leading-6 opacity-80 lg:w-10/12">We use the information we collect in various ways, including to:</p>
+      <ul className="list-disc text-sm font-light mb-4 lg:w-10/12">
+        <li className="ml-8 py-1 italic">Provide, operate, and maintain our website.</li>
+        <li className="ml-8 py-1 italic">Improve, personalize, and expand our website.</li>
+        <li className="ml-8 py-1 italic">Understand and analyze how you use our website.</li>
+        <li className="ml-8 py-1 italic">Develop new products, services, features, and functionality.</li>
+        <li className="ml-8 py-1 italic">
           Communicate with you, either directly or through one of our partners,
           including for customer service, to provide you with updates and other
           information relating to the website, and for marketing and promotional
-          purposes
+          purposes.
         </li>
-        <li>Send you emails</li>
-        <li>Find and prevent fraud</li>
+        <li className="ml-8 py-1 italic">Send you emails.</li>
+        <li className="ml-8 py-1 italic">Find and prevent fraud.</li>
       </ul>
 
-      <h2>Log Files</h2>
-      <p>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">Log Files</h2>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         TattooDesignPro follows a standard procedure of using log files. These
         files log visitors when they visit websites. All hosting companies do
         this and a part of hosting services analytics. The information collected
@@ -74,8 +76,8 @@ export default function PrivacyPolicyPage() {
         users movement on the website, and gathering demographic information.
       </p>
 
-      <h2>Cookies and Web Beacons</h2>
-      <p>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">Cookies and Web Beacons</h2>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         Like any other website, TattooDesignPro uses &quot;cookies&quot;. These
         cookies are used to store information including visitors preferences,
         and the pages on the website that the visitor accessed or visited. The
@@ -84,12 +86,12 @@ export default function PrivacyPolicyPage() {
         information.
       </p>
 
-      <h2>Advertising Partners Privacy Policiess</h2>
-      <p>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">Advertising Partners Privacy Policiess</h2>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         You may consult this list to find the Privacy Policy for each of the
         advertising partners of TattooDesignPro.
       </p>
-      <p>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         Third-party ad servers or ad networks uses technologies like cookies,
         JavaScript, or Web Beacons that are used in their respective
         advertisements and links that appear on TattooDesignPro, which are sent
@@ -98,13 +100,13 @@ export default function PrivacyPolicyPage() {
         effectiveness of their advertising campaigns and/or to personalize the
         advertising content that you see on websites that you visit.
       </p>
-      <p>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         Note that TattooDesignPro has no access to or control over these cookies
         that are used by third-party advertisers.
       </p>
 
-      <h2>Third Party Privacy Policies</h2>
-      <p>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">Third Party Privacy Policies</h2>
+      <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         TattooDesignPro&apos;s Privacy Policy does not apply to other
         advertisers or websites. Thus, we are advising you to consult the
         respective Privacy Policies of these third-party ad servers for more
