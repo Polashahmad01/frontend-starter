@@ -127,27 +127,27 @@ export default function TermsOfUsePage() {
           which may not hyperlink to our Web site.
         </li>
       </ul>
-      <p>
+      <p className="text-sm font-light leading-6 mb-4 opacity-80 lg:w-10/12">
         These organizations may link to our home page, to publications or to
         other Website information so long as the link: (a) is not in any way
         deceptive; (b) does not falsely imply sponsorship, endorsement or
         approval of the linking party and its products and/or services; and (c)
         fits within the context of the linking party&apos;s site.
       </p>
-      <p>
+      <p className="text-sm font-light leading-6 opacity-80 lg:w-10/12">
         We may consider and approve other link requests from the following types
         of organizations:
       </p>
-      <ul>
-        <li>Commonly-known consumer and/or business information sources.</li>
-        <li>Dot.com community sites.</li>
-        <li>Associations or other groups representing charities.</li>
-        <li>Online directory distributors.</li>
-        <li>Internet portals.</li>
-        <li>Accounting, law and consulting firms.</li>
-        <li>Educational institutions and trade associations.</li>
+      <ul className="list-disc text-sm font-light mb-4 lg:w-10/12">
+        <li className="ml-8 py-1 italic">Commonly-known consumer and/or business information sources.</li>
+        <li className="ml-8 py-1 italic">Dot.com community sites.</li>
+        <li className="ml-8 py-1 italic">Associations or other groups representing charities.</li>
+        <li className="ml-8 py-1 italic">Online directory distributors.</li>
+        <li className="ml-8 py-1 italic">Internet portals.</li>
+        <li className="ml-8 py-1 italic">Accounting, law and consulting firms.</li>
+        <li className="ml-8 py-1 italic">Educational institutions and trade associations.</li>
       </ul>
-      <p>
+      <p className="text-sm font-light leading-6 mb-4 opacity-80 lg:w-10/12">
         We will approve link requests from these organizations if we decide
         that: (a) the link would not make us look unfavorably to ourselves or to
         our accredited businesses; (b) the organization does not have any
@@ -155,14 +155,14 @@ export default function TermsOfUsePage() {
         the hyperlink compensates the absence of TATTOO DESIGN PRO LTD; and (d)
         the link is in the context of general resource information.
       </p>
-      <p>
+      <p className="text-sm font-light leading-6 mb-4 opacity-80 lg:w-10/12">
         These organizations may link to our home page so long as the link: (a)
         is not in any way deceptive; (b) does not falsely imply sponsorship,
         endorsement or approval of the linking party and its products or
         services; and (c) fits within the context of the linking party&apos;s
         site.
       </p>
-      <p>
+      <p className="text-sm font-light leading-6 mb-4 opacity-80 lg:w-10/12">
         If you are one of the organizations listed in paragraph 2 above and are
         interested in linking to our website, you must inform us by sending an
         e-mail to TATTOO DESIGN PRO LTD. Please include your name, your
@@ -171,30 +171,30 @@ export default function TermsOfUsePage() {
         list of the URLs on our site to which you would like to link. Wait 2-3
         weeks for a response.
       </p>
-      <p>Approved organizations may hyperlink to our Website as follows:</p>
-      <ul>
-        <li>By use of our corporate name.</li>
-        <li>By use of the uniform resource locator being linked to.</li>
-        <li>
+      <p className="text-sm font-light leading-6 opacity-80 lg:w-10/12">Approved organizations may hyperlink to our Website as follows:</p>
+      <ul className="list-disc text-sm font-light mb-4 lg:w-10/12">
+        <li className="ml-8 py-1 italic">By use of our corporate name.</li>
+        <li className="ml-8 py-1 italic">By use of the uniform resource locator being linked to.</li>
+        <li className="ml-8 py-1 italic">
           By use of any other description of our Website being linked to that
           makes sense within the context and format of content on the linking
           party&apos;s site.
         </li>
       </ul>
-      <p>
+      <p className="text-sm font-light leading-6 mb-4 opacity-80 lg:w-10/12">
         No use of TATTOO DESIGN PRO LTD&apos;s logo or other artwork will be
         allowed for linking absent a trademark license agreement.
       </p>
 
-      <h2>iFrames</h2>
-      <p>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">iFrames</h2>
+      <p className="text-sm font-light leading-6 mb-4 opacity-80 lg:w-10/12">
         Without prior approval and written permission, you may not create frames
         around our Webpages that alter in any way the visual presentation or
         appearance of our Website.
       </p>
 
-      <h2>Content Liability</h2>
-      <p>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">Content Liability</h2>
+      <p className="text-sm font-light leading-6 mb-4 opacity-80 lg:w-10/12">
         We shall not be hold responsible for any content that appears on your
         Website. You agree to protect and defend us against all claims that is
         rising on your Website. No link(s) should appear on any Website that may
@@ -203,8 +203,8 @@ export default function TermsOfUsePage() {
         any third party rights.
       </p>
 
-      <h2>Reservation of Rights</h2>
-      <p>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">Reservation of Rights</h2>
+      <p className="text-sm font-light leading-6 mb-4 opacity-80 lg:w-10/12">
         We reserve the right to request that you remove all links or any
         particular link to our Website. You approve to immediately remove all
         links to our Website upon request. We also reserve the right to amen
@@ -213,58 +213,58 @@ export default function TermsOfUsePage() {
         these linking terms and conditions.
       </p>
 
-      <h2>Removal of links from our website</h2>
-      <p>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">Removal of links from our website</h2>
+      <p className="text-sm font-light leading-6 mb-4 opacity-80 lg:w-10/12">
         If you find any link on our Website that is offensive for any reason,
         you are free to contact and inform us any moment. We will consider
         requests to remove links but we are not obligated to or so or to respond
         to you directly.
       </p>
-      <p>
+      <p className="text-sm font-light leading-6 mb-4 opacity-80 lg:w-10/12">
         We do not ensure that the information on this website is correct, we do
         not warrant its completeness or accuracy; nor do we promise to ensure
         that the website remains available or that the material on the website
         is kept up to date.
       </p>
 
-      <h2>Disclaimer</h2>
-      <p>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">Disclaimer</h2>
+      <p className="text-sm font-light leading-6 opacity-80 lg:w-10/12">
         To the maximum extent permitted by applicable law, we exclude all
         representations, warranties and conditions relating to our website and
         the use of this website. Nothing in this disclaimer will:
       </p>
-      <ul>
-        <li>
+      <ul className="list-disc text-sm font-light mb-4 lg:w-10/12">
+        <li className="ml-8 py-1 italic">
           Limit or exclude our or your liability for death or personal injury.
         </li>
-        <li>
+        <li className="ml-8 py-1 italic">
           Limit or exclude our or your liability for fraud or fraudulent
           misrepresentation.
         </li>
-        <li>
+        <li className="ml-8 py-1 italic">
           Limit any of our or your liabilities in any way that is not permitted
           under applicable law.
         </li>
-        <li>
+        <li className="ml-8 py-1 italic">
           Exclude any of our or your liabilities that may not be excluded under
           applicable law.
         </li>
       </ul>
-      <p>
+      <p className="text-sm font-light leading-6 mb-4 opacity-80 lg:w-10/12">
         The limitations and prohibitions of liability set in this Section and
         elsewhere in this disclaimer: (a) are subject to the preceding
         paragraph; and (b) govern all liabilities arising under the disclaimer,
         including liabilities arising in contract, in tort and for breach of
         statutory duty.
       </p>
-      <p>
+      <p className="text-sm font-light leading-6 mb-4 opacity-80 lg:w-10/12">
         As long as the website and the information and services on the website
         are provided free of charge, we will not be liable for any loss or
         damage of any nature.
       </p>
 
-      <h2>Availability</h2>
-      <p>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">Availability</h2>
+      <p className="text-sm font-light leading-6 mb-4 pb-6 opacity-80 lg:w-10/12">
         We reserve the right to withdraw or amend this website, and any of its
         services, in any time without prior notice. We shall not be liable for
         any loss or damage resulting from the modification or withdrawal of any
