@@ -44,7 +44,7 @@ export default function RegisterPage() {
           <p className="text-xs font-extralight leading-normal tracking-normal text-[rgba(135,135,135,1)]">
             By continuing, you agree to FrontEnd Starter’s 
             <br/>
-            <Link to="#" className="underline text-[rgba(0,0,0,1)]">Terms of Use.</Link> Read our <Link to="#" className="underline text-[rgba(0,0,0,1)]">Privacy Policy.</Link></p>
+            <Link to="/terms-of-use" className="underline text-[rgba(0,0,0,1)]">Terms of Use.</Link> Read our <Link to="/privacy-policy" className="underline text-[rgba(0,0,0,1)]">Privacy Policy.</Link></p>
         </div>
       </div>
     </section>
