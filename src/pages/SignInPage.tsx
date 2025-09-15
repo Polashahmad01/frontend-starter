@@ -1,12 +1,12 @@
-import { Link } from "react-router";
-import { FaGoogle, FaApple, FaLock, FaEnvelope } from "react-icons/fa";
 import { GoZap } from "react-icons/go";
+import { FaGoogle, FaApple, FaLock, FaEnvelope } from "react-icons/fa";
+import { Link } from "react-router";
 
-export default function SignUpPage() {
+export default function SignInPage() {
   return (
     <section className="flex justify-center items-center h-screen py-6 sm:py-0">
       <article className="hidden md:flex md:justify-center md:items-center md:flex-1 bg-[#f3f3f3] h-full">
-        <h1 className="text-5xl font-bold opacity-80">Sign Up Text</h1>
+        <h1 className="text-5xl font-bold opacity-80">Sign In Text</h1>
       </article>
       <article className="flex justify-center items-center flex-1 h-full">
         <div className="flex flex-col items-center w-5/6">
@@ -15,12 +15,12 @@ export default function SignUpPage() {
           </div>
           <div className="mb-2">
             <h1 className="text-xl font-bold leading-none tracking-normal opacity-80 md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl">
-              Get Started
+              Easy Sign In
             </h1>
           </div>
           <div className="mb-6">
             <p className="text-base md:text-lg leading-normal text-[#404040] tracking-normal max-w-75">
-              Sign up for free
+              Sign in to your account
             </p>
           </div>
           <div className="w-full h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mb-6" />
@@ -70,10 +70,10 @@ export default function SignUpPage() {
           <div className="flex justify-center items-center mb-4">
             <div className="flex gap-2">
               <p className="text-[#404040] font-light">
-                Already have an account?
+                Don’t have an account?
               </p>
-              <Link className="text-[#404040] underline" to="/sign-in">
-                Sign In
+              <Link className="text-[#404040] underline" to="/sign-up">
+                Sign up
               </Link>
             </div>
           </div>

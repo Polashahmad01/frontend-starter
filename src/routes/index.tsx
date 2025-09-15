@@ -2,9 +2,9 @@ import { createBrowserRouter, RouterProvider, Navigate } from "react-router";
 import Layout from "../layouts/Layout";
 import AuthLayout from "../layouts/AuthLayout";
 import HomePage from "../pages/HomePage";
-import RegisterPage from "../pages/RegisterPage";
+import JoinPage from "../pages/JoinPage";
 import SignUpPage from "../pages/SignUpPage";
-import LoginPage from "../pages/LoginPage";
+import SignInPage from "../pages/SignInPage";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import ResetPasswordPage from "../pages/ResetPasswordPage";
 import NotFoundPage from "../pages/NotFoundPage";
@@ -33,17 +33,17 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <RegisterPage />,
+        element: <JoinPage />,
       },
     ],
   },
   {
-    path: "/login",
+    path: "/sign-in",
     element: <AuthLayout />,
     children: [
       {
         index: true,
-        element: <LoginPage />,
+        element: <SignInPage />,
       },
     ],
   },
