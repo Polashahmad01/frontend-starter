@@ -47,19 +47,15 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: "/sign-up",
-  //   element: <AuthLayout />,
-  //   children: [
-  //     {
-  //       index: true,
-  //       element: <SignUpPage />,
-  //     },
-  //   ],
-  // },
   {
     path: "/sign-up",
-    element: <SignUpPage />
+    element: <AuthLayout />,
+    children: [
+      {
+        index: true,
+        element: <SignUpPage />,
+      },
+    ],
   },
   {
     path: "/forgot-password",

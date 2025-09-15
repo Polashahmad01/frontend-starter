@@ -4,7 +4,7 @@ import { GoZap } from "react-icons/go";
 
 export default function SignUpPage() {
   return (
-    <section className="flex justify-center items-center h-screen">
+    <section className="flex justify-center items-center h-screen py-6 sm:py-0">
       <article className="hidden md:flex md:justify-center md:items-center md:flex-1 bg-[#f3f3f3] h-full">
         <h1 className="text-5xl font-bold opacity-80">Sign Up Text</h1>
       </article>
