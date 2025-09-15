@@ -24,7 +24,7 @@ export default function SignUpPage() {
             </p>
           </div>
           <div className="w-full h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mb-6" />
-          <div className="flex flex-col gap-3 mb-4 xl:w-1/2">
+          <div className="flex flex-col gap-3 mb-6 xl:w-1/2">
             <button className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center gap-4 bg-[#f3f3f3] hover:bg-[#fafafa]">
               <FaGoogle size={15} />
               <span>Sign in with Google</span>
@@ -33,36 +33,36 @@ export default function SignUpPage() {
               <FaApple size={20} />
               <span>Sign in with Apple</span>
             </button>
+            <form className="flex flex-col gap-3">
+              <div className="relative w-full">
+                <FaEnvelope
+                  className="absolute top-1/2 left-6 -translate-y-1/2"
+                  size={16}
+                />
+                <input
+                  type="email"
+                  className="w-full border bg-[#f3f3f3] border-[#d4d4d4] rounded-full text-sm py-2 pl-14 pr-4 outline-0"
+                  placeholder="E-mail"
+                />
+              </div>
+              <div className="relative w-full">
+                <FaLock
+                  className="absolute top-1/2 left-6 -translate-y-1/2"
+                  size={16}
+                />
+                <input
+                  className="w-full border bg-[#f3f3f3] border-[#d4d4d4]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
+                  type="password"
+                  placeholder="Password"
+                />
+              </div>
+              <div className="w-full">
+                <button className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center text-white opacity-80 bg-[#000000] transition-all duration-400 hover:bg-[#f3f3f3] hover:text-[#000000]">
+                  Continue
+                </button>
+              </div>
+            </form>
           </div>
-          <form className="flex flex-col gap-3 mb-4 xl:w-1/2">
-            <div className="relative w-full">
-              <FaEnvelope
-                className="absolute top-1/2 left-6 -translate-y-1/2"
-                size={16}
-              />
-              <input
-                type="email"
-                className="w-full border bg-[#f3f3f3] border-[#d4d4d4] rounded-full text-sm pl-14 pr-6 py-[10px] outline-0"
-                placeholder="E-mail"
-              />
-            </div>
-            <div className="relative w-full">
-              <FaLock
-                className="absolute top-1/2 left-6 -translate-y-1/2"
-                size={16}
-              />
-              <input
-                className="w-full border bg-[#f3f3f3] border-[#d4d4d4] rounded-full text-sm pl-14 pr-6 py-[10px] outline-0"
-                type="password"
-                placeholder="Password"
-              />
-            </div>
-            <div className="w-full">
-              <button className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center text-white opacity-80 bg-[#000000] transition-all duration-400 hover:bg-[#f3f3f3] hover:text-[#000000]">
-                Continue
-              </button>
-            </div>
-          </form>
           <div className="flex justify-center items-center mb-4">
             <div className="flex gap-2">
               <p className="text-[#404040] font-light">
