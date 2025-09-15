@@ -46,18 +46,28 @@ export default function TermsOfUsePage() {
 
       <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">License</h2>
       <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
-        Unless otherwise stated, FRONTEND STARTER and/or its licensors own
-        the intellectual property rights for all material on FrontEnd Starter.
-        All intellectual property rights are reserved. You may access this from
+        Unless otherwise stated, FRONTEND STARTER and/or its licensors own the
+        intellectual property rights for all material on FrontEnd Starter. All
+        intellectual property rights are reserved. You may access this from
         FrontEnd Starter for your own personal use subjected to restrictions set
         in these terms and conditions.
       </p>
-      <p className="text-sm font-light leading-6 opacity-80 lg:w-10/12">You must not:</p>
+      <p className="text-sm font-light leading-6 opacity-80 lg:w-10/12">
+        You must not:
+      </p>
       <ul className="list-disc text-sm font-light mb-4 lg:w-10/12">
-        <li className="ml-8 py-1 italic">Republish material from FrontEnd Starter.</li>
-        <li className="ml-8 py-1 italic">Sell, rent or sub-license material from FrontEnd Starter.</li>
-        <li className="ml-8 py-1 italic">Reproduce, duplicate or copy material from FrontEnd Starter.</li>
-        <li className="ml-8 py-1 italic">Redistribute content from FrontEnd Starter.</li>
+        <li className="ml-8 py-1 italic">
+          Republish material from FrontEnd Starter.
+        </li>
+        <li className="ml-8 py-1 italic">
+          Sell, rent or sub-license material from FrontEnd Starter.
+        </li>
+        <li className="ml-8 py-1 italic">
+          Reproduce, duplicate or copy material from FrontEnd Starter.
+        </li>
+        <li className="ml-8 py-1 italic">
+          Redistribute content from FrontEnd Starter.
+        </li>
       </ul>
 
       <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
@@ -67,22 +77,23 @@ export default function TermsOfUsePage() {
       <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         Parts of this website offer an opportunity for users to post and
         exchange opinions and information in certain areas of the website.
-        FRONTEND STARTER does not filter, edit, publish or review Comments
-        prior to their presence on the website. Comments do not reflect the
-        views and opinions of FRONTEND STARTER,its agents and/or
-        affiliates. Comments reflect the views and opinions of the person who
-        post their views and opinions. To the extent permitted by applicable
-        laws, FRONTEND STARTER shall not be liable for the Comments or for
-        any liability, damages or expenses caused and/or suffered as a result of
-        any use of and/or posting of and/or appearance of the Comments on this
-        website.
+        FRONTEND STARTER does not filter, edit, publish or review Comments prior
+        to their presence on the website. Comments do not reflect the views and
+        opinions of FRONTEND STARTER,its agents and/or affiliates. Comments
+        reflect the views and opinions of the person who post their views and
+        opinions. To the extent permitted by applicable laws, FRONTEND STARTER
+        shall not be liable for the Comments or for any liability, damages or
+        expenses caused and/or suffered as a result of any use of and/or posting
+        of and/or appearance of the Comments on this website.
       </p>
       <p className="text-sm font-light leading-6 opacity-80 mb-4 lg:w-10/12">
         FRONTEND STARTER reserves the right to monitor all Comments and to
         remove any Comments which can be considered inappropriate, offensive or
         causes breach of these Terms and Conditions.
       </p>
-      <p className="text-sm font-light leading-6 opacity-80 lg:w-10/12">You warrant and represent that:</p>
+      <p className="text-sm font-light leading-6 opacity-80 lg:w-10/12">
+        You warrant and represent that:
+      </p>
       <ul className="list-disc text-sm font-light mb-4 lg:w-10/12">
         <li className="ml-8 py-1 italic">
           You are entitled to post the Comments on our website and have all
@@ -108,7 +119,9 @@ export default function TermsOfUsePage() {
         your Comments in any and all forms, formats or media.
       </p>
 
-      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">Hyperlinking to our Content</h2>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">
+        Hyperlinking to our Content
+      </h2>
       <p className="text-sm font-light leading-6 opacity-80 lg:w-10/12">
         The following organizations may link to our Website without prior
         written approval:
@@ -139,21 +152,29 @@ export default function TermsOfUsePage() {
         of organizations:
       </p>
       <ul className="list-disc text-sm font-light mb-4 lg:w-10/12">
-        <li className="ml-8 py-1 italic">Commonly-known consumer and/or business information sources.</li>
+        <li className="ml-8 py-1 italic">
+          Commonly-known consumer and/or business information sources.
+        </li>
         <li className="ml-8 py-1 italic">Dot.com community sites.</li>
-        <li className="ml-8 py-1 italic">Associations or other groups representing charities.</li>
+        <li className="ml-8 py-1 italic">
+          Associations or other groups representing charities.
+        </li>
         <li className="ml-8 py-1 italic">Online directory distributors.</li>
         <li className="ml-8 py-1 italic">Internet portals.</li>
-        <li className="ml-8 py-1 italic">Accounting, law and consulting firms.</li>
-        <li className="ml-8 py-1 italic">Educational institutions and trade associations.</li>
+        <li className="ml-8 py-1 italic">
+          Accounting, law and consulting firms.
+        </li>
+        <li className="ml-8 py-1 italic">
+          Educational institutions and trade associations.
+        </li>
       </ul>
       <p className="text-sm font-light leading-6 mb-4 opacity-80 lg:w-10/12">
         We will approve link requests from these organizations if we decide
         that: (a) the link would not make us look unfavorably to ourselves or to
         our accredited businesses; (b) the organization does not have any
         negative records with us; (c) the benefit to us from the visibility of
-        the hyperlink compensates the absence of FRONTEND STARTER; and (d)
-        the link is in the context of general resource information.
+        the hyperlink compensates the absence of FRONTEND STARTER; and (d) the
+        link is in the context of general resource information.
       </p>
       <p className="text-sm font-light leading-6 mb-4 opacity-80 lg:w-10/12">
         These organizations may link to our home page so long as the link: (a)
@@ -165,16 +186,20 @@ export default function TermsOfUsePage() {
       <p className="text-sm font-light leading-6 mb-4 opacity-80 lg:w-10/12">
         If you are one of the organizations listed in paragraph 2 above and are
         interested in linking to our website, you must inform us by sending an
-        e-mail to FRONTEND STARTER. Please include your name, your
-        organization name, contact information as well as the URL of your site,
-        a list of any URLs from which you intend to link to our Website, and a
-        list of the URLs on our site to which you would like to link. Wait 2-3
-        weeks for a response.
+        e-mail to FRONTEND STARTER. Please include your name, your organization
+        name, contact information as well as the URL of your site, a list of any
+        URLs from which you intend to link to our Website, and a list of the
+        URLs on our site to which you would like to link. Wait 2-3 weeks for a
+        response.
       </p>
-      <p className="text-sm font-light leading-6 opacity-80 lg:w-10/12">Approved organizations may hyperlink to our Website as follows:</p>
+      <p className="text-sm font-light leading-6 opacity-80 lg:w-10/12">
+        Approved organizations may hyperlink to our Website as follows:
+      </p>
       <ul className="list-disc text-sm font-light mb-4 lg:w-10/12">
         <li className="ml-8 py-1 italic">By use of our corporate name.</li>
-        <li className="ml-8 py-1 italic">By use of the uniform resource locator being linked to.</li>
+        <li className="ml-8 py-1 italic">
+          By use of the uniform resource locator being linked to.
+        </li>
         <li className="ml-8 py-1 italic">
           By use of any other description of our Website being linked to that
           makes sense within the context and format of content on the linking
@@ -182,8 +207,8 @@ export default function TermsOfUsePage() {
         </li>
       </ul>
       <p className="text-sm font-light leading-6 mb-4 opacity-80 lg:w-10/12">
-        No use of FRONTEND STARTER&apos;s logo or other artwork will be
-        allowed for linking absent a trademark license agreement.
+        No use of FRONTEND STARTER&apos;s logo or other artwork will be allowed
+        for linking absent a trademark license agreement.
       </p>
 
       <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">iFrames</h2>
@@ -193,7 +218,9 @@ export default function TermsOfUsePage() {
         appearance of our Website.
       </p>
 
-      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">Content Liability</h2>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">
+        Content Liability
+      </h2>
       <p className="text-sm font-light leading-6 mb-4 opacity-80 lg:w-10/12">
         We shall not be hold responsible for any content that appears on your
         Website. You agree to protect and defend us against all claims that is
@@ -203,7 +230,9 @@ export default function TermsOfUsePage() {
         any third party rights.
       </p>
 
-      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">Reservation of Rights</h2>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">
+        Reservation of Rights
+      </h2>
       <p className="text-sm font-light leading-6 mb-4 opacity-80 lg:w-10/12">
         We reserve the right to request that you remove all links or any
         particular link to our Website. You approve to immediately remove all
@@ -213,7 +242,9 @@ export default function TermsOfUsePage() {
         these linking terms and conditions.
       </p>
 
-      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">Removal of links from our website</h2>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">
+        Removal of links from our website
+      </h2>
       <p className="text-sm font-light leading-6 mb-4 opacity-80 lg:w-10/12">
         If you find any link on our Website that is offensive for any reason,
         you are free to contact and inform us any moment. We will consider
@@ -227,7 +258,9 @@ export default function TermsOfUsePage() {
         is kept up to date.
       </p>
 
-      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">Disclaimer</h2>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">
+        Disclaimer
+      </h2>
       <p className="text-sm font-light leading-6 opacity-80 lg:w-10/12">
         To the maximum extent permitted by applicable law, we exclude all
         representations, warranties and conditions relating to our website and
@@ -263,7 +296,9 @@ export default function TermsOfUsePage() {
         damage of any nature.
       </p>
 
-      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">Availability</h2>
+      <h2 className="text-xl font-bold mb-4 opacity-80 lg:w-10/12">
+        Availability
+      </h2>
       <p className="text-sm font-light leading-6 mb-4 pb-6 opacity-80 lg:w-10/12">
         We reserve the right to withdraw or amend this website, and any of its
         services, in any time without prior notice. We shall not be liable for

@@ -1,6 +1,10 @@
 import { CustomerTestimonialProps } from "../types/NotFound";
 
-export default function CustomerTestimonial({ title, rating, testimonial}: CustomerTestimonialProps) {
+export default function CustomerTestimonial({
+  title,
+  rating,
+  testimonial,
+}: CustomerTestimonialProps) {
   return (
     <div className="p-4 border border-[#00000014] rounded-[20px] flex flex-col gap-4 w-full">
       <div className="flex items-center gap-2">
@@ -25,9 +29,7 @@ export default function CustomerTestimonial({ title, rating, testimonial}: Custo
           </div>
         </div>
       </div>
-      <p className="text-[13px]">
-        {testimonial}
-      </p>
+      <p className="text-[13px]">{testimonial}</p>
     </div>
   );
 }

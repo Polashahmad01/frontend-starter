@@ -3,5 +3,5 @@ export default function ResetPasswordPage() {
     <div>
       <h1>Reset Password Page</h1>
     </div>
-  )
+  );
 }

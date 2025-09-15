@@ -1,9 +1,9 @@
-
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router";
 import Layout from "../layouts/Layout";
 import AuthLayout from "../layouts/AuthLayout";
 import HomePage from "../pages/HomePage";
 import RegisterPage from "../pages/RegisterPage";
+import SignUpPage from "../pages/SignUpPage";
 import LoginPage from "../pages/LoginPage";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import ResetPasswordPage from "../pages/ResetPasswordPage";
@@ -19,13 +19,13 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage />
-      }
-    ]
+        element: <HomePage />,
+      },
+    ],
   },
   {
     path: "/",
-    element: <Navigate to="/login" replace />
+    element: <Navigate to="/login" replace />,
   },
   {
     path: "/join",
@@ -33,9 +33,9 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <RegisterPage />
-      }
-    ]
+        element: <RegisterPage />,
+      },
+    ],
   },
   {
     path: "/login",
@@ -43,9 +43,19 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <LoginPage />
-      }
-    ]
+        element: <LoginPage />,
+      },
+    ],
+  },
+  {
+    path: "/sign-up",
+    element: <AuthLayout />,
+    children: [
+      {
+        index: true,
+        element: <SignUpPage />,
+      },
+    ],
   },
   {
     path: "/forgot-password",
@@ -53,9 +63,9 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <ForgotPasswordPage />
-      }
-    ]
+        element: <ForgotPasswordPage />,
+      },
+    ],
   },
   {
     path: "/reset-password",
@@ -63,9 +73,9 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <ResetPasswordPage />
-      }
-    ]
+        element: <ResetPasswordPage />,
+      },
+    ],
   },
   {
     path: "/terms-of-use",
@@ -73,9 +83,9 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <TermsOfUsePage />
-      }
-    ]
+        element: <TermsOfUsePage />,
+      },
+    ],
   },
   {
     path: "/privacy-policy",
@@ -83,16 +93,16 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <PrivacyPolicyPage />
-      }
-    ]
+        element: <PrivacyPolicyPage />,
+      },
+    ],
   },
   {
     path: "*",
-    element: <NotFoundPage {...notFoundPagePropsData} />
+    element: <NotFoundPage {...notFoundPagePropsData} />,
   },
 ]);
 
 export default function AppRouter() {
-  return <RouterProvider router={router} />
+  return <RouterProvider router={router} />;
 }

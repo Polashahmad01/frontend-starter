@@ -3,18 +3,19 @@ import { CustomerTestimonialProps, NotFoundPageProps } from "../types/NotFound";
 export const notFoundPagePropsData: NotFoundPageProps = {
   errorCode: "404",
   title: "Innovation Not Found!",
-  message: "This page seems to be still in development. Our engineering team is probably working on something amazing here!",
+  message:
+    "This page seems to be still in development. Our engineering team is probably working on something amazing here!",
   links: [
     {
       label: "Home",
-      href: "/app"
+      href: "/app",
     },
     {
       label: "Go Back",
-      href: "../"
-    }
-  ]
-}
+      href: "../",
+    },
+  ],
+};
 
 export const testimonials: CustomerTestimonialProps[] = [
   {
