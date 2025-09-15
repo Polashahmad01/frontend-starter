@@ -1,6 +1,6 @@
 export default function TermsOfUsePage() {
   return (
-    <article>
+    <article className="container mx-auto px-6 py-6 h-screen">
       <h1 className="text-xl font-bold leading-none tracking-normal mb-4 opacity-80 md:text-3xl lg:text-4xl lg:max-w-5/6 xl:text-5xl 2xl:text-6xl">
         Terms and Conditions
       </h1>

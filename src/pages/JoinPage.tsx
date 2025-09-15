@@ -4,7 +4,7 @@ import { MdEmail } from "react-icons/md";
 import { GoZap } from "react-icons/go";
 import MarqueeEffect from "../components/MarqueeEffect";
 
-export default function RegisterPage() {
+export default function JoinPage() {
   return (
     <section className="grid place-items-center h-full md:grid-cols-2">
       <div className="hidden md:block">
