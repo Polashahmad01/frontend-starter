@@ -1,4 +1,3 @@
-
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router";
 import Layout from "../layouts/Layout";
 import AuthLayout from "../layouts/AuthLayout";
@@ -19,13 +18,13 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage />
-      }
-    ]
+        element: <HomePage />,
+      },
+    ],
   },
   {
     path: "/",
-    element: <Navigate to="/login" replace />
+    element: <Navigate to="/login" replace />,
   },
   {
     path: "/join",
@@ -33,9 +32,9 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <RegisterPage />
-      }
-    ]
+        element: <RegisterPage />,
+      },
+    ],
   },
   {
     path: "/login",
@@ -43,9 +42,9 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <LoginPage />
-      }
-    ]
+        element: <LoginPage />,
+      },
+    ],
   },
   {
     path: "/forgot-password",
@@ -53,9 +52,9 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <ForgotPasswordPage />
-      }
-    ]
+        element: <ForgotPasswordPage />,
+      },
+    ],
   },
   {
     path: "/reset-password",
@@ -63,9 +62,9 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <ResetPasswordPage />
-      }
-    ]
+        element: <ResetPasswordPage />,
+      },
+    ],
   },
   {
     path: "/terms-of-use",
@@ -73,9 +72,9 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <TermsOfUsePage />
-      }
-    ]
+        element: <TermsOfUsePage />,
+      },
+    ],
   },
   {
     path: "/privacy-policy",
@@ -83,16 +82,16 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <PrivacyPolicyPage />
-      }
-    ]
+        element: <PrivacyPolicyPage />,
+      },
+    ],
   },
   {
     path: "*",
-    element: <NotFoundPage {...notFoundPagePropsData} />
+    element: <NotFoundPage {...notFoundPagePropsData} />,
   },
 ]);
 
 export default function AppRouter() {
-  return <RouterProvider router={router} />
+  return <RouterProvider router={router} />;
 }

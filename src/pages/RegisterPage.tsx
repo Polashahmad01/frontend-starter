@@ -18,13 +18,19 @@ export default function RegisterPage() {
           <GoZap size={40} className="animate-pulse" />
         </div>
         <div className="text-center mb-4 lg:flex lg:justify-center">
-          <h1 className="text-xl font-bold leading-none tracking-normal md:text-3xl lg:text-4xl lg:max-w-5/6 xl:text-5xl 2xl:text-6xl">Join millions of Happy Users</h1>
+          <h1 className="text-xl font-bold leading-none tracking-normal opacity-80 md:text-3xl lg:text-4xl lg:max-w-5/6 xl:text-5xl 2xl:text-6xl">
+            Join millions of Happy Users
+          </h1>
         </div>
         <div className="text-center mb-4">
-          <p className="text-base leading-normal tracking-normal max-w-75">Your data is safe with us, and you’ll never receive spam.</p>
+          <p className="text-base leading-normal tracking-normal max-w-75">
+            Your data is safe with us, and you’ll never receive spam.
+          </p>
         </div>
         <div className="text-center mb-4">
-          <p className="text-base leading-tight tracking-normal">Continue with one of these:</p>
+          <p className="text-base leading-tight tracking-normal">
+            Continue with one of these:
+          </p>
         </div>
         <div className="flex flex-col gap-3 mb-4">
           <button className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center gap-4 bg-[#f3f3f3] hover:bg-[#fafafa]">
@@ -42,9 +48,19 @@ export default function RegisterPage() {
         </div>
         <div className="text-center">
           <p className="text-xs font-extralight leading-normal tracking-normal text-[rgba(135,135,135,1)]">
-            By continuing, you agree to FrontEnd Starter’s 
-            <br/>
-            <Link to="/terms-of-use" className="underline text-[rgba(0,0,0,1)]">Terms of Use.</Link> Read our <Link to="/privacy-policy" className="underline text-[rgba(0,0,0,1)]">Privacy Policy.</Link></p>
+            By continuing, you agree to FrontEnd Starter’s
+            <br />
+            <Link to="/terms-of-use" className="underline text-[rgba(0,0,0,1)]">
+              Terms of Use.
+            </Link>{" "}
+            Read our{" "}
+            <Link
+              to="/privacy-policy"
+              className="underline text-[rgba(0,0,0,1)]"
+            >
+              Privacy Policy.
+            </Link>
+          </p>
         </div>
       </div>
     </section>
