@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout";
 import AuthLayout from "../layouts/AuthLayout";
 import HomePage from "../pages/HomePage";
 import RegisterPage from "../pages/RegisterPage";
+import SignUpPage from "../pages/SignUpPage";
 import LoginPage from "../pages/LoginPage";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import ResetPasswordPage from "../pages/ResetPasswordPage";
@@ -45,6 +46,20 @@ const router = createBrowserRouter([
         element: <LoginPage />,
       },
     ],
+  },
+  // {
+  //   path: "/sign-up",
+  //   element: <AuthLayout />,
+  //   children: [
+  //     {
+  //       index: true,
+  //       element: <SignUpPage />,
+  //     },
+  //   ],
+  // },
+  {
+    path: "/sign-up",
+    element: <SignUpPage />
   },
   {
     path: "/forgot-password",

@@ -41,10 +41,10 @@ export default function RegisterPage() {
             <FaApple size={20} />
             <span>Sign in with Apple</span>
           </button>
-          <button className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center gap-4 bg-[#f3f3f3] hover:bg-[#fafafa]">
+          <Link to="/sign-up" className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center gap-4 bg-[#f3f3f3] hover:bg-[#fafafa]">
             <MdEmail size={17} />
             <span>Continue with Email</span>
-          </button>
+          </Link>
         </div>
         <div className="text-center">
           <p className="text-xs font-extralight leading-normal tracking-normal text-[rgba(135,135,135,1)]">
