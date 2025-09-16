@@ -1,105 +1,66 @@
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router";
+import { lazy } from "react";
 import Layout from "../layouts/Layout";
 import AuthLayout from "../layouts/AuthLayout";
-import HomePage from "../pages/HomePage";
-import JoinPage from "../pages/JoinPage";
-import SignUpPage from "../pages/SignUpPage";
-import SignInPage from "../pages/SignInPage";
-import ForgotPasswordPage from "../pages/ForgotPasswordPage";
-import ResetPasswordPage from "../pages/ResetPasswordPage";
-import NotFoundPage from "../pages/NotFoundPage";
-import TermsOfUsePage from "../pages/TermsOfUsePage";
-import PrivacyPolicyPage from "../pages/PrivacyPolicyPage";
+import LazyWrapper from "../components/LazyWrapper";
+import legalRoutes from "./LegalRoutes";
+import authRoutes from "./AuthRoutes";
+import appRoutes from "./AppRoutes";
 import { notFoundPagePropsData } from "../lib/AppData";
 
+// Lazy load components for better performance
+const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));
+
+// Create router with improved structure
 const router = createBrowserRouter([
-  {
-    path: "/app",
-    element: <Layout />,
-    children: [
-      {
-        index: true,
-        element: <HomePage />,
-      },
-    ],
-  },
+  // Root redirect
   {
     path: "/",
     element: <Navigate to="/sign-in" replace />,
   },
+
+  // Protected app routes
   {
-    path: "/join",
-    element: <AuthLayout />,
-    children: [
-      {
-        index: true,
-        element: <JoinPage />,
+    path: "/app",
+    element: <Layout />,
+    children: appRoutes.map((route) => ({
+      path: route.path,
+      index: route.index,
+      element: route.element,
+      handle: {
+        title: route.title,
+        description: route.description,
+        requiresAuth: route.requiresAuth,
       },
-    ],
+    })),
   },
+
+  // Auth routes with shared layout
   {
-    path: "/sign-in",
+    path: "/",
     element: <AuthLayout />,
-    children: [
-      {
-        index: true,
-        element: <SignInPage />,
+    children: [...authRoutes, ...legalRoutes].map((route) => ({
+      path: route.path,
+      element: route.element,
+      handle: {
+        title: route.title,
+        description: route.description,
       },
-    ],
+    })),
   },
-  {
-    path: "/sign-up",
-    element: <AuthLayout />,
-    children: [
-      {
-        index: true,
-        element: <SignUpPage />,
-      },
-    ],
-  },
-  {
-    path: "/forgot-password",
-    element: <AuthLayout />,
-    children: [
-      {
-        index: true,
-        element: <ForgotPasswordPage />,
-      },
-    ],
-  },
-  {
-    path: "/reset-password",
-    element: <AuthLayout />,
-    children: [
-      {
-        index: true,
-        element: <ResetPasswordPage />,
-      },
-    ],
-  },
-  {
-    path: "/terms-of-use",
-    element: <AuthLayout />,
-    children: [
-      {
-        index: true,
-        element: <TermsOfUsePage />,
-      },
-    ],
-  },
-  {
-    path: "/privacy-policy",
-    element: <AuthLayout />,
-    children: [
-      {
-        index: true,
-        element: <PrivacyPolicyPage />,
-      },
-    ],
-  },
+
+  // 404 fallback
   {
     path: "*",
-    element: <NotFoundPage {...notFoundPagePropsData} />,
+    element: (
+      <LazyWrapper>
+        <NotFoundPage {...notFoundPagePropsData} />
+      </LazyWrapper>
+    ),
+    handle: {
+      title: "Page Not Found",
+      description: "The requested page could not be found",
+    },
   },
 ]);
 
