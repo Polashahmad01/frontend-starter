@@ -6,7 +6,7 @@ export default function SignUpPage() {
   return (
     <section className="flex justify-center items-center h-screen py-6 sm:py-0">
       <article className="hidden md:flex md:justify-center md:items-center md:flex-1 bg-[#f3f3f3] h-full">
-        <h1 className="text-5xl font-bold opacity-80">Sign Up Text</h1>
+        <h1 className="text-5xl font-bold opacity-80">Sign Up</h1>
       </article>
       <article className="flex justify-center items-center flex-1 h-full">
         <div className="flex flex-col items-center w-5/6">
@@ -45,7 +45,7 @@ export default function SignUpPage() {
                 />
                 <input
                   type="email"
-                  className="w-full border bg-[#f3f3f3] border-[#d4d4d4] rounded-full text-sm py-2 pl-14 pr-4 outline-0"
+                  className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)] rounded-full text-sm py-2 pl-14 pr-4 outline-0"
                   placeholder="E-mail"
                 />
               </div>
@@ -55,7 +55,7 @@ export default function SignUpPage() {
                   size={16}
                 />
                 <input
-                  className="w-full border bg-[#f3f3f3] border-[#d4d4d4]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
+                  className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
                   type="password"
                   placeholder="Password"
                 />
