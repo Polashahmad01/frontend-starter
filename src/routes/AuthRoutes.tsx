@@ -1,0 +1,65 @@
+import { lazy } from "react";
+import LazyWrapper from "../components/LazyWrapper";
+import { RouteConfig } from "../types/routes";
+
+// Lazy load components for better performance
+const JoinPage = lazy(() => import("../pages/JoinPage"));
+const SignInPage = lazy(() => import("../pages/SignInPage"));
+const SignUpPage = lazy(() => import("../pages/SignUpPage"));
+const ForgotPasswordPage = lazy(() => import("../pages/ForgotPasswordPage"));
+const ResetPasswordPage = lazy(() => import("../pages/ResetPasswordPage"));
+
+const authRoutes: RouteConfig[] = [
+  {
+    path: "/join",
+    element: (
+      <LazyWrapper>
+        <JoinPage />
+      </LazyWrapper>
+    ),
+    title: "Join",
+    description: "Join our platform",
+  },
+  {
+    path: "/sign-in",
+    element: (
+      <LazyWrapper>
+        <SignInPage />
+      </LazyWrapper>
+    ),
+    title: "Sign In",
+    description: "Sign in to your account",
+  },
+  {
+    path: "/sign-up",
+    element: (
+      <LazyWrapper>
+        <SignUpPage />
+      </LazyWrapper>
+    ),
+    title: "Sign Up",
+    description: "Create a new account",
+  },
+  {
+    path: "/forgot-password",
+    element: (
+      <LazyWrapper>
+        <ForgotPasswordPage />
+      </LazyWrapper>
+    ),
+    title: "Forgot Password",
+    description: "Reset your password",
+  },
+  {
+    path: "/reset-password",
+    element: (
+      <LazyWrapper>
+        <ResetPasswordPage />
+      </LazyWrapper>
+    ),
+    title: "Reset Password",
+    description: "Set a new password",
+  },
+];
+
+export default authRoutes;
