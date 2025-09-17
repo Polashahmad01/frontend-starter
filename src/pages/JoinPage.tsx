@@ -1,18 +1,14 @@
 import { Link } from "react-router";
 import { FaGoogle, FaApple, FaEnvelope } from "react-icons/fa";
 import { GoZap } from "react-icons/go";
-import MarqueeEffect from "../components/MarqueeEffect";
 
 export default function JoinPage() {
   return (
     <section className="flex justify-center items-center h-screen py-6 sm:py-0">
       <article className="hidden md:flex md:justify-center md:items-center md:flex-1 bg-[#f3f3f3] h-full">
-        {/* <div className="bg-[#f3f3f3] rounded-3xl flex items-center justify-center px-4 py-4 overflow-hidden md:h-96 md:w-90 xl:w-[450px]">
-          <MarqueeEffect />
-        </div> */}
-        <div className="px-6">
-          <MarqueeEffect />
-        </div>
+        <h1 className="text-xl font-bold leading-none tracking-normal opacity-80 md:text-3xl lg:text-4xl lg:max-w-5/6 xl:text-5xl 2xl:text-6xl">
+          Join Text
+        </h1>
       </article>
       <article className="flex justify-center items-center flex-1 h-full">
         <div className="flex flex-col items-center w-5/6">
