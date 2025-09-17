@@ -1,6 +1,6 @@
 import { lazy } from "react";
 import LazyWrapper from "../components/LazyWrapper";
-import { RouteConfig } from "../types/routes";
+import { RouteConfig } from "../types";
 
 // Lazy load components for better performance
 const TermsOfUsePage = lazy(() => import("../pages/TermsOfUsePage"));

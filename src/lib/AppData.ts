@@ -1,4 +1,4 @@
-import { CustomerTestimonialProps, NotFoundPageProps } from "../types/NotFound";
+import { NotFoundPageProps, CustomerTestimonialProps } from "../types";
 
 export const notFoundPagePropsData: NotFoundPageProps = {
   errorCode: "404",

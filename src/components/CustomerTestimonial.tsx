@@ -1,4 +1,4 @@
-import { CustomerTestimonialProps } from "../types/NotFound";
+import { CustomerTestimonialProps } from "../types";
 
 export default function CustomerTestimonial({
   title,
