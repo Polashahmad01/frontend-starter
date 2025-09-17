@@ -1,0 +1,19 @@
+import { NotFoundPageProps } from "../types";
+
+export const notFoundPagePropsData: NotFoundPageProps = {
+  errorCode: "404",
+  title: "Innovation Not Found!",
+  message:
+    "This page seems to be still in development. Our engineering team is probably working on something amazing here!",
+  links: [
+    {
+      label: "Home",
+      href: "/app",
+    },
+    {
+      label: "Go Back",
+      href: "../",
+    },
+  ],
+};
+

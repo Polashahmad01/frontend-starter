@@ -6,7 +6,7 @@ import LazyWrapper from "../components/LazyWrapper";
 import legalRoutes from "./LegalRoutes";
 import authRoutes from "./AuthRoutes";
 import appRoutes from "./AppRoutes";
-import { notFoundPagePropsData } from "../lib/AppData";
+import { notFoundPagePropsData } from "../lib";
 
 // Lazy load components for better performance
 const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));

@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { NotFoundPageProps } from "../types/NotFound";
+import { NotFoundPageProps } from "../types";
 
 export default function NotFoundPage({
   errorCode = "404",
