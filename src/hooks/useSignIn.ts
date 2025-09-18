@@ -27,36 +27,46 @@ interface SignInUser {
 const signInUser = async (
   userData: SignInUser
 ): Promise<SignInWithEmailAndPasswordResponse> => {
-  const response = await fetch("http://localhost:8000/api/auth/login", {
-    method: "post",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(userData),
-  });
+  try {
+    const response = await fetch("http://localhost:8000/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
 
-  if (!response.ok) {
-    throw new Error("Failed to sign in");
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || `Sign in failed: ${response.status}`);
+    }
+
+    console.log("Sign in successful:", data);
+    return data;
+  } catch (error) {
+    console.error("Sign in error:", error);
+    throw error instanceof Error ? error : new Error("An unexpected error occurred during sign in");
   }
-
-  console.log("response", await response.json());
-
-  return response.json();
 };
 
 export const authKeys = {
   signIn: () => ["auth", "signIn"] as const,
 };
 
-export const useCreateUserWithEmailAndPassword = () => {
+export const useSignInWithEmailAndPassword = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: signInUser,
-    onSuccess: () => {
+    onSuccess: (data) => {
+      console.log("Sign in mutation successful:", data);
       queryClient.invalidateQueries({
         queryKey: authKeys.signIn(),
       });
+    },
+    onError: (error) => {
+      console.error("Sign in mutation failed:", error);
     },
   });
 };

@@ -4,6 +4,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   disabled?: boolean;
   isPending?: boolean;
+  type?: "button" | "submit" | "reset";
   onClick?: () => void;
 }
 
@@ -12,11 +13,12 @@ export default function Button({
   onClick,
   disabled,
   isPending,
+  type,
   ...restProps
 }: ButtonProps) {
   return (
     <button
-      type="button"
+      type={type}
       onClick={onClick}
       disabled={disabled}
       {...restProps}
