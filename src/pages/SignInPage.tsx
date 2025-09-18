@@ -1,8 +1,25 @@
 import { GoZap } from "react-icons/go";
 import { FaGoogle, FaApple, FaLock, FaEnvelope } from "react-icons/fa";
 import { Link } from "react-router";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Button from "../components/ui/Button";
+import { signInSchema, SignInSchema } from "../schema";
 
 export default function SignInPage() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignInSchema>({
+    resolver: zodResolver(signInSchema),
+    mode: "onChange",
+  });
+
+  const onSubmit = (data: SignInSchema) => {
+    console.log(data);
+  };
+
   return (
     <section className="flex justify-center items-center h-screen py-6 sm:py-0">
       <article className="hidden md:flex md:justify-center md:items-center md:flex-1 bg-[#f3f3f3] h-full">
@@ -37,33 +54,50 @@ export default function SignInPage() {
                 <span>Sign in with Apple</span>
               </div>
             </button>
-            <form className="flex flex-col gap-3">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="flex flex-col gap-3"
+            >
               <div className="relative w-full">
                 <FaEnvelope
                   className="absolute top-1/2 left-6 -translate-y-1/2"
                   size={16}
                 />
                 <input
+                  id="email"
+                  autoComplete="on"
+                  {...register("email")}
                   type="email"
                   className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)] rounded-full text-sm py-2 pl-14 pr-4 outline-0"
                   placeholder="E-mail"
                 />
               </div>
+              {errors.email && (
+                <p className="self-end text-xs -mt-2 text-red-500">
+                  {errors.email.message}
+                </p>
+              )}
               <div className="relative w-full">
                 <FaLock
                   className="absolute top-1/2 left-6 -translate-y-1/2"
                   size={16}
                 />
                 <input
+                  id="password"
+                  autoComplete="on"
+                  {...register("password")}
                   className="w-full border bg-[#f3f3f3] border-[rgb(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
                   type="password"
                   placeholder="Password"
                 />
               </div>
+              {errors.password && (
+                <p className="self-end text-xs -mt-2 text-red-500">
+                  {errors.password.message}
+                </p>
+              )}
               <div className="w-full">
-                <button className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center text-white opacity-80 bg-[#000000] transition-all duration-400 hover:bg-[#f3f3f3] hover:text-[#000000]">
-                  Continue
-                </button>
+                <Button type="submit">Continue</Button>
               </div>
             </form>
           </div>
