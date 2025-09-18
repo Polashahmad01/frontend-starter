@@ -5,10 +5,10 @@ export const signInSchema = z.object({
   password: z
     .string()
     .min(8, "Password must be at least 8 characters long")
-    .regex(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
-      "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
-    ),
+    .regex(/(?=.*[A-Z])/, "one uppercase letter")
+    .regex(/(?=.*[a-z])/, "one lowercase letter")
+    .regex(/(?=.*\d)/, "one number")
+    .regex(/(?=.*[@$!%*?&])/, "one special character"),
 });
 
 export type SignInSchema = z.infer<typeof signInSchema>;

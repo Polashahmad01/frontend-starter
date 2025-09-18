@@ -3,42 +3,22 @@ import { FaGoogle, FaApple, FaLock, FaEnvelope } from "react-icons/fa";
 import { Link } from "react-router";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
 import Button from "../components/ui/Button";
-import { useSignInWithEmailAndPassword } from "../hooks/useSignIn";
 import { signInSchema, SignInSchema } from "../schema";
 
 export default function SignInPage() {
-  const { mutate, isPending, data, error } = useSignInWithEmailAndPassword();
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<SignInSchema>({
     resolver: zodResolver(signInSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
     mode: "onChange",
   });
 
   const onSubmit = (data: SignInSchema) => {
-    mutate(data);
+    console.log(data);
   };
-
-  useEffect(() => {
-    if (data) {
-      console.log("data", data);
-    }
-  }, [data]);
-
-  useEffect(() => {
-    if (error) {
-      console.log("error", error);
-    }
-  }, [error]);
 
   return (
     <section className="flex justify-center items-center h-screen py-6 sm:py-0">
@@ -84,6 +64,8 @@ export default function SignInPage() {
                   size={16}
                 />
                 <input
+                  id="email"
+                  autoComplete="on"
                   {...register("email")}
                   type="email"
                   className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)] rounded-full text-sm py-2 pl-14 pr-4 outline-0"
@@ -91,7 +73,9 @@ export default function SignInPage() {
                 />
               </div>
               {errors.email && (
-                <p className="text-red-500">{errors.email.message}</p>
+                <p className="self-end text-xs -mt-2 text-red-500">
+                  {errors.email.message}
+                </p>
               )}
               <div className="relative w-full">
                 <FaLock
@@ -99,6 +83,8 @@ export default function SignInPage() {
                   size={16}
                 />
                 <input
+                  id="password"
+                  autoComplete="on"
                   {...register("password")}
                   className="w-full border bg-[#f3f3f3] border-[rgb(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
                   type="password"
@@ -106,16 +92,12 @@ export default function SignInPage() {
                 />
               </div>
               {errors.password && (
-                <p className="text-red-500">{errors.password.message}</p>
+                <p className="self-end text-xs -mt-2 text-red-500">
+                  {errors.password.message}
+                </p>
               )}
               <div className="w-full">
-                <Button
-                  disabled={isPending}
-                  isPending={isPending}
-                  type="submit"
-                >
-                  Continue
-                </Button>
+                <Button type="submit">Continue</Button>
               </div>
             </form>
           </div>
