@@ -5,10 +5,22 @@ import {
   decrement,
   reset,
 } from "../store/slices/counterSlice";
+import { useUsers, useCreateUser } from "../hooks/useUsers";
 
 export default function AppPage() {
   const { value: count, loading } = useAppSelector((state) => state.counter);
   const dispatch = useAppDispatch();
+
+  const { data: users, isLoading, error } = useUsers();
+  const createUserMutation = useCreateUser();
+
+  const handleCreateUser = () => {
+    createUserMutation.mutate({
+      name: "Polash Ahmad",
+      email: "polash@gmail.com",
+      username: "Polashahmad01",
+    });
+  };
 
   return (
     <section className="flex justify-center items-center h-screen">
@@ -47,7 +59,47 @@ export default function AppPage() {
             >
               Reset
             </button>
+            {loading && <p className="text-blue-600">Loading...</p>}
           </div>
+        </div>
+        <div className="bg-[#f3f3f3] rounded-lg shadow-md p-6">
+          <div className="mb-4">
+            <button
+              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors disabled:opacity-50"
+              onClick={handleCreateUser}
+              disabled={createUserMutation.isPending}
+            >
+              {createUserMutation.isPending ? "Loading..." : "Create User"}
+            </button>
+            {createUserMutation.isError && (
+              <p className="text-red-600 mt-2">
+                Error: {createUserMutation.error?.message}
+              </p>
+            )}
+            {createUserMutation.isSuccess && (
+              <p className="text-green-600 mt-2">User created successfully!</p>
+            )}
+          </div>
+
+          {isLoading && <p className="text-blue-600">Loading users...</p>}
+
+          {error && (
+            <p className="text-red-600">
+              Error: {error instanceof Error ? error.message : "Unknown error"}
+            </p>
+          )}
+
+          {users && (
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {users.slice(0, 6).map((user) => (
+                <div key={user.id} className="border rounded-lg p-4">
+                  <h3 className="font-semibold">{user.name}</h3>
+                  <p className="text-gray-600">@{user.username}</p>
+                  <p className="text-sm text-gray-500">{user.email}</p>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
