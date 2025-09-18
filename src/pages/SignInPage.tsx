@@ -1,8 +1,18 @@
 import { GoZap } from "react-icons/go";
 import { FaGoogle, FaApple, FaLock, FaEnvelope } from "react-icons/fa";
 import { Link } from "react-router";
+import { useCreateUserWithEmailAndPassword } from "../hooks/useSignIn";
 
 export default function SignInPage() {
+  const { mutate } = useCreateUserWithEmailAndPassword();
+
+  const handleSubmit = () => {
+    mutate({
+      email: "openflash36@gmail.com",
+      password: "Password123!",
+    });
+  };
+
   return (
     <section className="flex justify-center items-center h-screen py-6 sm:py-0">
       <article className="hidden md:flex md:justify-center md:items-center md:flex-1 bg-[#f3f3f3] h-full">
@@ -61,7 +71,11 @@ export default function SignInPage() {
                 />
               </div>
               <div className="w-full">
-                <button className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center text-white opacity-80 bg-[#000000] transition-all duration-400 hover:bg-[#f3f3f3] hover:text-[#000000]">
+                <button
+                  type="button"
+                  onClick={handleSubmit}
+                  className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center text-white opacity-80 bg-[#000000] transition-all duration-400 hover:bg-[#f3f3f3] hover:text-[#000000]"
+                >
                   Continue
                 </button>
               </div>
