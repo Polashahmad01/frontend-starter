@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { signInWithEmailPassword } from "../services/authService";
 import { useAppDispatch } from "../store/hooks/useStore";
 import { loginSuccess, loginFailure } from "../store/slices/authSlice";
+import { notify } from "../utils/notify";
 
 export const useAuth = () => {
   const dispatch = useAppDispatch();
@@ -11,11 +12,12 @@ export const useAuth = () => {
     mutationFn: signInWithEmailPassword,
     onSuccess: (data) => {
       dispatch(loginSuccess(data));
+      notify("success", data.message);
     },
     onError: (error: unknown) => {
-      dispatch(
-        loginFailure(error as { error: { code: string; message: string } })
-      );
+      const errorMsg = error as { error: { code: string; message: string } };
+      dispatch(loginFailure(errorMsg));
+      notify("error", errorMsg.error.message);
     },
   });
   return { mutateAsync, isPending };
