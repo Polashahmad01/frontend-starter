@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../components/ui/Button";
 import { signInSchema, SignInSchema } from "../schema";
+import { useAuth } from "../hooks/useAuth";
 
 export default function SignInPage() {
   const {
@@ -16,8 +17,10 @@ export default function SignInPage() {
     mode: "onChange",
   });
 
+  const { mutateAsync, isPending } = useAuth();
+
   const onSubmit = (data: SignInSchema) => {
-    console.log(data);
+    mutateAsync(data);
   };
 
   return (
@@ -97,7 +100,9 @@ export default function SignInPage() {
                 </p>
               )}
               <div className="w-full">
-                <Button type="submit">Continue</Button>
+                <Button disabled={isPending} type="submit">
+                  {isPending ? "Signing in..." : "Continue"}
+                </Button>
               </div>
             </form>
           </div>
