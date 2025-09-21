@@ -1,8 +1,9 @@
 import { SignInSchema } from "../schema";
+import { SignInResponse } from "../types";
 
 export const signInWithEmailPassword = async (
   userData: SignInSchema
-): Promise<Response> => {
+): Promise<SignInResponse> => {
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND_API_URL}/api/auth/login`,
     {
