@@ -1,8 +1,25 @@
 import { Link } from "react-router";
 import { FaGoogle, FaApple, FaLock, FaEnvelope } from "react-icons/fa";
+import { IoPersonSharp } from "react-icons/io5";
 import { GoZap } from "react-icons/go";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { signUpSchema, SignUpSchema } from "../schema";
+import { useAuth } from "../hooks/useAuth";
+import Button from "../components/ui/Button";
 
 export default function SignUpPage() {
+  const { signUpWithEmailPasswordMutation, signUpPending } = useAuth();
+
+  const { register, handleSubmit, formState: { errors } } = useForm<SignUpSchema>({
+    mode: "onChange",
+    resolver: zodResolver(signUpSchema),
+  });
+
+  const onSubmit = (formData: SignUpSchema) => {
+    signUpWithEmailPasswordMutation(formData);
+  }
+
   return (
     <section className="flex justify-center items-center h-screen py-6 sm:py-0">
       <article className="hidden md:flex md:justify-center md:items-center md:flex-1 bg-[#f3f3f3] h-full">
@@ -37,33 +54,87 @@ export default function SignUpPage() {
                 <span>Sign in with Apple</span>
               </div>
             </button>
-            <form className="flex flex-col gap-3">
+            <form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
               <div className="relative w-full">
                 <FaEnvelope
                   className="absolute top-1/2 left-6 -translate-y-1/2"
                   size={16}
                 />
                 <input
+                  id="email"
                   type="email"
-                  className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)] rounded-full text-sm py-2 pl-14 pr-4 outline-0"
+                  autoComplete="on"
                   placeholder="E-mail"
+                  {...register("email")}
+                  className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)] rounded-full text-sm py-2 pl-14 pr-4 outline-0"
                 />
               </div>
+              {errors.email && (
+                <p className="self-end text-xs -mt-2 text-red-500">
+                  {errors.email.message}
+                </p>
+              )}
               <div className="relative w-full">
                 <FaLock
                   className="absolute top-1/2 left-6 -translate-y-1/2"
                   size={16}
                 />
                 <input
+                  id="password"
+                  autoComplete="on"
+                  {...register("password")}
                   className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
                   type="password"
                   placeholder="Password"
                 />
               </div>
+              {errors.password && (
+                <p className="self-end text-xs -mt-2 text-red-500">
+                  {errors.password.message}
+                </p>
+              )}
+              <div className="relative w-full">
+                <IoPersonSharp
+                  className="absolute top-1/2 left-6 -translate-y-1/2"
+                  size={17}
+                />
+                <input
+                  id="firstName"
+                  autoComplete="on"
+                  {...register("firstName")}
+                  className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
+                  type="text"
+                  placeholder="First Name"
+                />
+              </div>
+              {errors.firstName && (
+                <p className="self-end text-xs -mt-2 text-red-500">
+                  {errors.firstName.message}
+                </p>
+              )}
+              <div className="relative w-full">
+                <IoPersonSharp
+                  className="absolute top-1/2 left-6 -translate-y-1/2"
+                  size={17}
+                />
+                <input
+                  id="lastName"
+                  autoComplete="on"
+                  {...register("lastName")}
+                  className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
+                  type="text"
+                  placeholder="Last Name"
+                />
+              </div>
+              {errors.lastName && (
+                <p className="self-end text-xs -mt-2 text-red-500">
+                  {errors.lastName.message}
+                </p>
+              )}
               <div className="w-full">
-                <button className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center text-white opacity-80 bg-[#000000] transition-all duration-400 hover:bg-[#f3f3f3] hover:text-[#000000]">
-                  Continue
-                </button>
+                <Button disabled={signUpPending} type="submit">
+                  {signUpPending ? "Signing up..." : "Continue"}
+                </Button>
               </div>
             </form>
           </div>
