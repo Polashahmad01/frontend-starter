@@ -5,12 +5,12 @@ import { GoZap } from "react-icons/go";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpSchema, SignUpSchema } from "../schema";
-import { useAuth } from "../hooks/useAuth";
+import { useSignUp } from "../hooks/useSignUp";
 import { useInput } from "../hooks/useInput";
 import Button from "../components/ui/Button";
 
 export default function SignUpPage() {
-  const { signUpWithEmailPasswordMutation, signUpPending } = useAuth();
+  const { signUpPending, signUpWithEmailPasswordMutation } = useSignUp();
   const { inputType, toggleInputType } = useInput("password");
   const { register, handleSubmit, watch, formState: { errors } } = useForm<SignUpSchema>({
     mode: "onChange",
@@ -151,7 +151,7 @@ export default function SignUpPage() {
               )}
               <div className="w-full">
                 <Button disabled={signUpPending} type="submit">
-                  {signUpPending ? "Signing Up..." : "Continue"}
+                  {signUpPending ? "SignIng Up..." : "Continue"}
                 </Button>
               </div>
             </form>
