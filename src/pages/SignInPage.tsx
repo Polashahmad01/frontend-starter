@@ -17,10 +17,10 @@ export default function SignInPage() {
     mode: "onChange",
   });
 
-  const { mutateAsync, isPending } = useAuth();
+  const { signInWithEmailPasswordMutation, signInPending } = useAuth();
 
   const onSubmit = (data: SignInSchema) => {
-    mutateAsync(data);
+    signInWithEmailPasswordMutation(data);
   };
 
   return (
@@ -100,8 +100,8 @@ export default function SignInPage() {
                 </p>
               )}
               <div className="w-full">
-                <Button disabled={isPending} type="submit">
-                  {isPending ? "Signing in..." : "Continue"}
+                <Button disabled={signInPending} type="submit">
+                  {signInPending ? "Signing in..." : "Continue"}
                 </Button>
               </div>
             </form>

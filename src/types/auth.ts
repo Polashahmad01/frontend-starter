@@ -27,3 +27,12 @@ export interface SignInResponse {
   };
   error: Error;
 }
+
+export interface SignUpResponse {
+  success: boolean;
+  message: string;
+  data: {
+    user: User;
+    accessToken: string;
+  };
+}
