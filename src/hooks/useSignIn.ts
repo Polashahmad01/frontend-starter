@@ -4,7 +4,7 @@ import { useAppDispatch } from "../store/hooks/useStore";
 import { loginSuccess, loginFailure } from "../store/slices/authSlice";
 import { notify } from "../utils/notify";
 
-export const useAuth = () => {
+export const useSignIn = () => {
   const dispatch = useAppDispatch();
 
   const {
@@ -15,12 +15,13 @@ export const useAuth = () => {
     mutationFn: signInWithEmailPassword,
     onSuccess: (data) => {
       dispatch(loginSuccess(data));
-      notify("success", data.message);
+      notify("success", "Login successful");
+      console.log("data", data);
     },
-    onError: (error: unknown) => {
-      const errorMsg = error as { error: { code: string; message: string } };
-      dispatch(loginFailure(errorMsg));
-      notify("error", errorMsg.error.message);
+    onError: (error: { error: { code: string; message: string } }) => {
+      dispatch(loginFailure(error.error));
+      notify("error", error.error.message);
+      console.log("error", error.error);
     },
   });
 
