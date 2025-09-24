@@ -1,4 +1,4 @@
-import { SignInSchema, SignUpSchema } from "../schema";
+import { ForgotPasswordSchema, SignInSchema, SignUpSchema } from "../schema";
 import { SignInResponse, SignUpResponse } from "../types";
 
 export const signInWithEmailPassword = async (
@@ -41,6 +41,31 @@ export const signUpWithEmailPassword = async (
 
   const data = await response.json();
   console.log("response data", data);
+  if (!response.ok) {
+    throw data;
+  }
+
+  return data;
+};
+
+export const forgotPasswordWithEmail = async (
+  formData: ForgotPasswordSchema
+) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND_API_URL}/api/auth/forgot-password`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: formData.email,
+      }),
+      credentials: "include",
+    }
+  );
+
+  const data = await response.json();
   if (!response.ok) {
     throw data;
   }
