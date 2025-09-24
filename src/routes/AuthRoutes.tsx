@@ -8,6 +8,7 @@ const SignInPage = lazy(() => import("../pages/SignInPage"));
 const SignUpPage = lazy(() => import("../pages/SignUpPage"));
 const ForgotPasswordPage = lazy(() => import("../pages/ForgotPasswordPage"));
 const ResetPasswordPage = lazy(() => import("../pages/ResetPasswordPage"));
+const VerifyEmailPage = lazy(() => import("../pages/VerifyEmailPage"));
 
 const authRoutes: RouteConfig[] = [
   {
@@ -59,6 +60,16 @@ const authRoutes: RouteConfig[] = [
     ),
     title: "Reset Password",
     description: "Set a new password",
+  },
+  {
+    path: "/verify-email",
+    element: (
+      <LazyWrapper>
+        <VerifyEmailPage />
+      </LazyWrapper>
+    ),
+    title: "Verify Email",
+    description: "Verify your email",
   },
 ];
 

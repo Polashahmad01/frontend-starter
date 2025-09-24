@@ -151,7 +151,7 @@ export default function SignUpPage() {
               )}
               <div className="w-full">
                 <Button disabled={signUpPending} type="submit">
-                  {signUpPending ? "SignIng Up..." : "Continue"}
+                  {signUpPending ? "Signing Up..." : "Continue"}
                 </Button>
               </div>
             </form>
