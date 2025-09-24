@@ -34,10 +34,14 @@ export const useAuth = () => {
     mutationKey: ["auth"],
     mutationFn: signUpWithEmailPassword,
     onSuccess: (data) => {
+      dispatch(loginSuccess(data));
+      notify("success", data.message);
       console.log("data", data);
     },
     onError: (error: unknown) => {
       const errorMsg = error as { error: { code: string; message: string } };
+      dispatch(loginFailure(errorMsg));
+      notify("error", errorMsg.error.message);
       console.log("errorMsg", errorMsg);
     },
   });
