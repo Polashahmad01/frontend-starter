@@ -29,6 +29,17 @@ export default function VerifyEmailPage() {
 			</article>
 			<article className="flex justify-center items-center flex-1 h-full">
 				<div className="flex flex-col items-center w-5/6">
+					<div className="mb-2">
+						<h1 className="text-xl font-bold leading-none tracking-normal opacity-80 md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl">
+							Verify Your Email
+						</h1>
+					</div>
+					<div className="mb-6">
+						<p className="text-base md:text-lg leading-normal text-[#404040] tracking-normal max-w-75">
+							Verify your email to continue
+						</p>
+					</div>
+					<div className="w-full h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mb-6" />
 					<form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
 						<div className="relative w-full">
 							<FaHockeyPuck
