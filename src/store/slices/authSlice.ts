@@ -25,16 +25,16 @@ export const authSlice = createSlice({
     },
     loginFailure: (
       state,
-      action: PayloadAction<{ error: { code: string; message: string } }>
+      action: PayloadAction<{ code: string; message: string }>
     ) => {
       state.error = {
-        code: action.payload.error.code,
-        message: action.payload.error.message,
+        code: action.payload.code,
+        message: action.payload.message,
       };
       state.isAuthenticated = false;
       state.user = null;
       state.accessToken = null;
-      state.message = action.payload.error.message;
+      state.message = action.payload.message;
     },
     logout: () => initialState,
   },
