@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../components/ui/Button";
 import { signInSchema, SignInSchema } from "../schema";
-import { useAuth } from "../hooks/useAuth";
+import { useSignIn } from "../hooks/useSignIn";
 import { useInput } from "../hooks/useInput";
 
 export default function SignInPage() {
@@ -21,8 +21,7 @@ export default function SignInPage() {
       password: "",
     },
   });
-
-  const { signInWithEmailPasswordMutation, signInPending } = useAuth();
+  const { signInPending, signInWithEmailPasswordMutation } = useSignIn();
   const { inputType, toggleInputType } = useInput("password");
 
   const onSubmit = (data: SignInSchema) => {
