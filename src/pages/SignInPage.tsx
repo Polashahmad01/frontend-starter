@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../components/ui/Button";
 import { signInSchema, SignInSchema } from "../schema";
 import { useAuth } from "../hooks/useAuth";
+import { useInput } from "../hooks/useInput";
 
 export default function SignInPage() {
   const {
@@ -18,6 +19,7 @@ export default function SignInPage() {
   });
 
   const { signInWithEmailPasswordMutation, signInPending } = useAuth();
+  const { inputType, toggleInputType } = useInput("password");
 
   const onSubmit = (data: SignInSchema) => {
     signInWithEmailPasswordMutation(data);
@@ -88,10 +90,12 @@ export default function SignInPage() {
                 <input
                   id="password"
                   autoComplete="on"
-                  {...register("password")}
-                  className="w-full border bg-[#f3f3f3] border-[rgb(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
-                  type="password"
+                  type={inputType}
                   placeholder="Password"
+                  {...register("password")}
+                  onFocus={() => toggleInputType()}
+                  onBlur={() => toggleInputType()}
+                  className="w-full border bg-[#f3f3f3] border-[rgb(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
                 />
               </div>
               {errors.password && (
