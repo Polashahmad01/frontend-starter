@@ -1,8 +1,38 @@
 import { GoZap } from "react-icons/go";
 import { FaLock } from "react-icons/fa";
 import { Link } from "react-router";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useLocation } from "react-router";
+import Button from "../components/ui/Button";
+import { useInput } from "../hooks/useInput";
+import { useResetPassword } from "../hooks/useResetPassword";
+import { resetPasswordSchema, ResetPasswordSchema } from "../schema/authSchema";
 
 export default function ResetPasswordPage() {
+  const location = useLocation();
+  const token = new URLSearchParams(location.search).get("token");
+  console.log("token", token);
+  const { resetPasswordIsPending, resetPasswordMutation } = useResetPassword();
+  const { register, handleSubmit, formState: { errors } } = useForm<ResetPasswordSchema>({
+    resolver: zodResolver(resetPasswordSchema),
+    mode: "onChange",
+    defaultValues: {
+      token: token || "",
+      password: "",
+      confirmPassword: "",
+    }
+  });
+  const { inputType, toggleInputType } = useInput("password");
+
+  const onSubmit = (formData: ResetPasswordSchema) => {
+    resetPasswordMutation({
+      token: token!,
+      password: formData.password,
+      confirmPassword: formData.confirmPassword
+    });
+  }
+
   return (
     <section className="flex justify-center items-center h-screen py-6 sm:py-0">
       <article className="hidden md:flex md:justify-center md:items-center md:flex-1 bg-[#f3f3f3] h-full">
@@ -15,7 +45,7 @@ export default function ResetPasswordPage() {
           </div>
           <div className="mb-4">
             <h1 className="text-xl font-bold leading-none tracking-normal opacity-80 md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl">
-              Forgot Password
+              Reset Password
             </h1>
           </div>
           <div className="mb-6">
@@ -25,18 +55,26 @@ export default function ResetPasswordPage() {
           </div>
           <div className="w-full h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mb-6" />
           <div className="flex flex-col gap-3 mb-6 xl:w-1/2">
-            <form className="flex flex-col gap-3">
+            <form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
               <div className="relative w-full">
                 <FaLock
                   className="absolute top-1/2 left-6 -translate-y-1/2"
                   size={16}
                 />
                 <input
-                  className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
-                  type="password"
+                  type={inputType}
                   placeholder="New Password"
+                  {...register("password")}
+                  onFocus={toggleInputType}
+                  onBlur={toggleInputType}
+                  className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
                 />
               </div>
+              {errors.password && (
+                <p className="self-end text-xs -mt-2 text-red-500">
+                  {errors.password.message}
+                </p>
+              )}
               <div className="relative w-full">
                 <FaLock
                   className="absolute top-1/2 left-6 -translate-y-1/2"
@@ -44,24 +82,32 @@ export default function ResetPasswordPage() {
                 />
                 <input
                   className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
-                  type="password"
+                  type={inputType}
                   placeholder="Confirm Password"
+                  {...register("confirmPassword")}
+                  onFocus={toggleInputType}
+                  onBlur={toggleInputType}
                 />
               </div>
+              {errors.confirmPassword && (
+                <p className="self-end text-xs -mt-2 text-red-500">
+                  {errors.confirmPassword.message}
+                </p>
+              )}
               <div className="w-full">
-                <button className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center text-white opacity-80 bg-[#000000] transition-all duration-400 hover:bg-[#f3f3f3] hover:text-[#000000]">
-                  Update Password
-                </button>
+                <Button disabled={resetPasswordIsPending} type="submit">
+                  {resetPasswordIsPending ? "Updating Password..." : "Update Password"}
+                </Button>
               </div>
             </form>
           </div>
           <div className="flex justify-center items-center mb-4">
             <div className="flex gap-2">
               <p className="text-[#404040] font-light">
-                Don’t have an account?
+                Already have an account?
               </p>
-              <Link className="text-[#404040] underline" to="/sign-up">
-                Sign up
+              <Link className="text-[#404040] underline" to="/sign-in">
+                Sign In
               </Link>
             </div>
           </div>
