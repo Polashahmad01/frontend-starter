@@ -16,6 +16,10 @@ export default function SignInPage() {
   } = useForm<SignInSchema>({
     resolver: zodResolver(signInSchema),
     mode: "onChange",
+    defaultValues: {
+      email: "",
+      password: "",
+    },
   });
 
   const { signInWithEmailPasswordMutation, signInPending } = useAuth();

@@ -35,4 +35,5 @@ export interface SignUpResponse {
     user: User;
     accessToken: string;
   };
+  error: Error;
 }

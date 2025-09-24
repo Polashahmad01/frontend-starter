@@ -12,10 +12,23 @@ import Button from "../components/ui/Button";
 export default function SignUpPage() {
   const { signUpWithEmailPasswordMutation, signUpPending } = useAuth();
   const { inputType, toggleInputType } = useInput("password");
-  const { register, handleSubmit, formState: { errors } } = useForm<SignUpSchema>({
+  const { register, handleSubmit, watch, formState: { errors } } = useForm<SignUpSchema>({
     mode: "onChange",
     resolver: zodResolver(signUpSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+      firstName: "",
+      lastName: "",
+    },
   });
+
+  const email = watch("email");
+  const password = watch("password");
+
+  const showNameFields = email && password &&
+    email.length > 0 && password.length > 0 &&
+    !errors.email && !errors.password;
 
   const onSubmit = (formData: SignUpSchema) => {
     signUpWithEmailPasswordMutation(formData);
@@ -82,7 +95,7 @@ export default function SignUpPage() {
                 />
                 <input
                   id="password"
-                  autoComplete="on"
+                  autoComplete="new-password"
                   {...register("password")}
                   className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
                   type={inputType}
@@ -96,47 +109,49 @@ export default function SignUpPage() {
                   {errors.password.message}
                 </p>
               )}
-              <div className="relative w-full">
-                <IoPersonSharp
-                  className="absolute top-1/2 left-6 -translate-y-1/2"
-                  size={17}
-                />
-                <input
-                  id="firstName"
-                  autoComplete="on"
-                  {...register("firstName")}
-                  className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
-                  type="text"
-                  placeholder="First Name"
-                />
-              </div>
-              {errors.firstName && (
-                <p className="self-end text-xs -mt-2 text-red-500">
-                  {errors.firstName.message}
-                </p>
-              )}
-              <div className="relative w-full">
-                <IoPersonSharp
-                  className="absolute top-1/2 left-6 -translate-y-1/2"
-                  size={17}
-                />
-                <input
-                  id="lastName"
-                  autoComplete="on"
-                  {...register("lastName")}
-                  className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
-                  type="text"
-                  placeholder="Last Name"
-                />
-              </div>
-              {errors.lastName && (
-                <p className="self-end text-xs -mt-2 text-red-500">
-                  {errors.lastName.message}
-                </p>
+              {showNameFields && (
+                <>
+                  <div className="relative w-full">
+                    <IoPersonSharp
+                      className="absolute top-1/2 left-6 -translate-y-1/2"
+                      size={17}
+                    />
+                    <input
+                      id="firstName"
+                      {...register("firstName")}
+                      className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
+                      type="text"
+                      placeholder="First Name"
+                    />
+                  </div>
+                  {errors.firstName && (
+                    <p className="self-end text-xs -mt-2 text-red-500">
+                      {errors.firstName.message}
+                    </p>
+                  )}
+                  <div className="relative w-full">
+                    <IoPersonSharp
+                      className="absolute top-1/2 left-6 -translate-y-1/2"
+                      size={17}
+                    />
+                    <input
+                      id="lastName"
+                      {...register("lastName")}
+                      className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
+                      type="text"
+                      placeholder="Last Name"
+                    />
+                  </div>
+                  {errors.lastName && (
+                    <p className="self-end text-xs -mt-2 text-red-500">
+                      {errors.lastName.message}
+                    </p>
+                  )}
+                </>
               )}
               <div className="w-full">
                 <Button disabled={signUpPending} type="submit">
-                  {signUpPending ? "Signing up..." : "Continue"}
+                  {signUpPending ? "Signing Up..." : "Continue"}
                 </Button>
               </div>
             </form>
