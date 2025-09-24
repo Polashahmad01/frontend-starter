@@ -6,11 +6,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpSchema, SignUpSchema } from "../schema";
 import { useAuth } from "../hooks/useAuth";
+import { useInput } from "../hooks/useInput";
 import Button from "../components/ui/Button";
 
 export default function SignUpPage() {
   const { signUpWithEmailPasswordMutation, signUpPending } = useAuth();
-
+  const { inputType, toggleInputType } = useInput("password");
   const { register, handleSubmit, formState: { errors } } = useForm<SignUpSchema>({
     mode: "onChange",
     resolver: zodResolver(signUpSchema),
@@ -84,7 +85,9 @@ export default function SignUpPage() {
                   autoComplete="on"
                   {...register("password")}
                   className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
-                  type="password"
+                  type={inputType}
+                  onFocus={() => toggleInputType()}
+                  onBlur={() => toggleInputType()}
                   placeholder="Password"
                 />
               </div>
