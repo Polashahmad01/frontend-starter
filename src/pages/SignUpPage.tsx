@@ -1,17 +1,22 @@
+import { useRef } from "react";
 import { Link } from "react-router";
 import { FaGoogle, FaApple, FaLock, FaEnvelope } from "react-icons/fa";
 import { IoPersonSharp } from "react-icons/io5";
+import { GoogleLogin } from "@react-oauth/google";
 import { GoZap } from "react-icons/go";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpSchema, SignUpSchema } from "../schema";
 import { useSignUp } from "../hooks/useSignUp";
 import { useInput } from "../hooks/useInput";
+import { useSignInWithGoogle } from "../hooks/useSignInWithGoogle";
 import Button from "../components/ui/Button";
 
 export default function SignUpPage() {
   const { signUpPending, signUpWithEmailPasswordMutation } = useSignUp();
   const { inputType, toggleInputType } = useInput("password");
+  const { isSignInWithGoogleLoading, signInWithPopUp } = useSignInWithGoogle();
+  const googleLoginRef = useRef<HTMLDivElement>(null);
   const { register, handleSubmit, watch, formState: { errors } } = useForm<SignUpSchema>({
     mode: "onChange",
     resolver: zodResolver(signUpSchema),
@@ -33,6 +38,13 @@ export default function SignUpPage() {
   const onSubmit = (formData: SignUpSchema) => {
     signUpWithEmailPasswordMutation(formData);
   }
+
+  const handleGoogleSignIn = () => {
+    const googleButton = googleLoginRef.current?.querySelector('div[role="button"]') as HTMLElement;
+    if (googleButton) {
+      googleButton.click();
+    }
+  };
 
   return (
     <section className="flex justify-center items-center h-screen py-6 sm:py-0">
@@ -56,10 +68,19 @@ export default function SignUpPage() {
           </div>
           <div className="w-full h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mb-6" />
           <div className="flex flex-col gap-3 mb-6 xl:w-1/2">
-            <button className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center bg-[#f3f3f3] hover:bg-[#fafafa]">
+            <div ref={googleLoginRef} className="hidden">
+              <GoogleLogin
+                onSuccess={signInWithPopUp}
+              />
+            </div>
+            <button
+              onClick={handleGoogleSignIn}
+              disabled={isSignInWithGoogleLoading}
+              className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center bg-[#f3f3f3] hover:bg-[#fafafa] disabled:opacity-50 disabled:cursor-not-allowed"
+            >
               <div className="flex items-center gap-4">
                 <FaGoogle size={15} />
-                <span>Sign in with Google</span>
+                <span>{isSignInWithGoogleLoading ? "Signing in..." : "Sign in with Google"}</span>
               </div>
             </button>
             <button className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center bg-[#f3f3f3] hover:bg-[#fafafa]">

@@ -1,8 +1,21 @@
+import { useRef } from "react";
+import { GoogleLogin } from "@react-oauth/google";
 import { Link } from "react-router";
 import { FaGoogle, FaApple, FaEnvelope } from "react-icons/fa";
 import { GoZap } from "react-icons/go";
+import { useSignInWithGoogle } from "../hooks/useSignInWithGoogle";
 
 export default function JoinPage() {
+  const { isSignInWithGoogleLoading, signInWithPopUp } = useSignInWithGoogle();
+  const googleLoginRef = useRef<HTMLDivElement>(null);
+
+  const handleGoogleSignIn = () => {
+    const googleButton = googleLoginRef.current?.querySelector('div[role="button"]') as HTMLElement;
+    if (googleButton) {
+      googleButton.click();
+    }
+  };
+
   return (
     <section className="flex justify-center items-center h-screen py-6 sm:py-0">
       <article className="hidden md:flex md:justify-center md:items-center md:flex-1 bg-[#f3f3f3] h-full">
@@ -32,10 +45,19 @@ export default function JoinPage() {
           </div>
           <div className="w-full h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mb-6" />
           <div className="flex flex-col gap-3 mb-6 xl:w-1/2">
-            <button className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center bg-[#f3f3f3] hover:bg-[#fafafa]">
+            <div ref={googleLoginRef} className="hidden">
+              <GoogleLogin
+                onSuccess={signInWithPopUp}
+              />
+            </div>
+            <button
+              onClick={handleGoogleSignIn}
+              disabled={isSignInWithGoogleLoading}
+              className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center bg-[#f3f3f3] hover:bg-[#fafafa] disabled:opacity-50 disabled:cursor-not-allowed"
+            >
               <div className="flex items-center gap-4">
                 <FaGoogle size={15} />
-                <span>Sign in with Google</span>
+                <span>{isSignInWithGoogleLoading ? "Signing in..." : "Sign in with Google"}</span>
               </div>
             </button>
             <button className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center bg-[#f3f3f3] hover:bg-[#fafafa]">

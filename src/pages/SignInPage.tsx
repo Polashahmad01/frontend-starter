@@ -62,23 +62,21 @@ export default function SignInPage() {
           </div>
           <div className="w-full h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mb-6" />
           <div className="flex flex-col gap-3 mb-6 xl:w-1/2">
-            <div>
-              <div ref={googleLoginRef} className="hidden">
-                <GoogleLogin
-                  onSuccess={signInWithPopUp}
-                />
-              </div>
-              <button
-                onClick={handleGoogleSignIn}
-                disabled={isSignInWithGoogleLoading}
-                className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center bg-[#f3f3f3] hover:bg-[#fafafa] disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <div className="flex items-center gap-4">
-                  <FaGoogle size={15} />
-                  <span>{isSignInWithGoogleLoading ? "Signing in..." : "Sign in with Google"}</span>
-                </div>
-              </button>
+            <div ref={googleLoginRef} className="hidden">
+              <GoogleLogin
+                onSuccess={signInWithPopUp}
+              />
             </div>
+            <button
+              onClick={handleGoogleSignIn}
+              disabled={isSignInWithGoogleLoading}
+              className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center bg-[#f3f3f3] hover:bg-[#fafafa] disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <div className="flex items-center gap-4">
+                <FaGoogle size={15} />
+                <span>{isSignInWithGoogleLoading ? "Signing in..." : "Sign in with Google"}</span>
+              </div>
+            </button>
             <button className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center bg-[#f3f3f3] hover:bg-[#fafafa]">
               <div className="flex items-center gap-4">
                 <FaApple size={20} />
