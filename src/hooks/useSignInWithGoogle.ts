@@ -29,7 +29,6 @@ export const useSignInWithGoogle = () => {
       dispatch(loginSuccess(data));
       notify("success", data.message);
       setIsSignInWithGoogleLoading(false);
-      console.log("data", data);
     } catch (error: unknown) {
       const errorPayload = (error && typeof error === 'object' && 'error' in error && error.error)
         ? error.error as { code: string; message: string }
