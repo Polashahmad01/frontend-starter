@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import { useMutation } from "@tanstack/react-query";
 import { notify } from "../utils/notify";
 import { verifyEmail } from "../services";
@@ -9,6 +10,7 @@ import {
 import { BaseErrorResponse } from "../types";
 
 export const useVerifyEmail = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const { mutateAsync: verifyEmailMutation, isPending: isVerifyEmailPending } = useMutation({
@@ -17,6 +19,7 @@ export const useVerifyEmail = () => {
     onSuccess: (data) => {
       dispatch(loginSuccess(data));
       notify("success", data.message);
+      navigate("/app");
     },
     onError: (error: unknown) => {
       const errorData = error as BaseErrorResponse;
