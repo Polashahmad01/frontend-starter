@@ -5,12 +5,13 @@ import { GoZap } from "react-icons/go";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpSchema, SignUpSchema } from "../schemas";
+import SignUpConfirmation from "../components/SignUpConfirmation";
 import { useSignUp } from "../hooks/useSignUp";
 import { useSignInWithGoogle } from "../hooks/useSignInWithGoogle";
 
 export default function SignUpPage() {
   const { isSignInWithGoogleLoading, signInWithGooglePopup } = useSignInWithGoogle();
-  const { isSignUpPending, signUpWithEmailPasswordMutation } = useSignUp();
+  const { isSignUpSuccess, isSignUpPending, signUpWithEmailPasswordMutation } = useSignUp();
   const { register, handleSubmit, watch, formState: { errors } } = useForm<SignUpSchema>({
     resolver: zodResolver(signUpSchema),
     mode: "onChange",
@@ -32,6 +33,7 @@ export default function SignUpPage() {
 
   return (
     <section className="flex justify-center items-center h-screen py-6 sm:py-0">
+      {isSignUpSuccess && <SignUpConfirmation />}
       <article className="hidden md:flex md:justify-center md:items-center md:flex-1 bg-[#f3f3f3] h-full">
         <h1 className="text-5xl font-bold opacity-80">Sign Up</h1>
       </article>
@@ -131,7 +133,7 @@ export default function SignUpPage() {
                   disabled={isSignUpPending}
                   className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center text-white opacity-80 bg-[#000000] transition-all duration-400 hover:bg-[#f3f3f3] hover:text-[#000000]"
                 >
-                  {isSignUpPending ? "Signing Up..." : "Continue"}
+                  {isSignUpPending ? "Signing In..." : "Continue"}
                 </button>
               </div>
             </form>

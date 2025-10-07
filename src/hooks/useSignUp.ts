@@ -8,7 +8,11 @@ import { BaseErrorResponse } from "../types";
 export const useSignUp = () => {
   const dispatch = useAppDispatch();
 
-  const { mutateAsync: signUpWithEmailPasswordMutation, isPending: isSignUpPending } = useMutation({
+  const {
+    mutateAsync: signUpWithEmailPasswordMutation,
+    isPending: isSignUpPending,
+    isSuccess: isSignUpSuccess
+  } = useMutation({
     mutationKey: ["auth"],
     mutationFn: signUpWithEmailPassword,
     onSuccess: (data) => {
@@ -23,6 +27,7 @@ export const useSignUp = () => {
   });
 
   return {
+    isSignUpSuccess,
     isSignUpPending,
     signUpWithEmailPasswordMutation
   }
