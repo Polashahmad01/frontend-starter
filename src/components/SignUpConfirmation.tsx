@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Modal from "./ui/Modal";
 import { useAppSelector } from "../store/hooks/useStore";
+import { useResendVerificationEmail } from "../hooks/useResendVerificationEmail";
 
 export default function SignUpConfirmation() {
   const { user } = useAppSelector((state) => state.auth);
   const [openModal, setOpenModal] = useState(true);
+  const { isResendVerificationEmailPending, resendVerificationEmailMutation } = useResendVerificationEmail();
 
   const closeModal = () => {
     setOpenModal(!openModal);
@@ -26,8 +28,19 @@ export default function SignUpConfirmation() {
           <p>If you don’t see it within a few minutes, check your spam folder or click below to resend.</p>
         </div>
         <div className="flex gap-2 sm:w-4/6">
-          <button className="text-sm w-full py-1.5 cursor-pointer rounded-full flex items-center justify-center text-white opacity-80 bg-[#000000] transition-all duration-400 hover:bg-[#f3f3f3] hover:text-[#000000]">Resend Email</button>
-          <button className="text-sm w-full py-1.5 cursor-pointer rounded-full flex items-center justify-center text-white opacity-80 bg-[#000000] transition-all duration-400 hover:bg-[#f3f3f3] hover:text-[#000000]" onClick={closeModal}>Got It</button>
+          <button
+            disabled={isResendVerificationEmailPending}
+            onClick={() => resendVerificationEmailMutation()}
+            className="text-sm w-full py-1.5 cursor-pointer rounded-full flex items-center justify-center text-white opacity-80 bg-[#000000] transition-all duration-400 hover:bg-[#f3f3f3] hover:text-[#000000] disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isResendVerificationEmailPending ? "Resending..." : "Resend Email"}
+          </button>
+          <button
+            onClick={closeModal}
+            className="text-sm w-full py-1.5 cursor-pointer rounded-full flex items-center justify-center text-white opacity-80 bg-[#000000] transition-all duration-400 hover:bg-[#f3f3f3] hover:text-[#000000]"
+            >
+              Got It
+          </button>
         </div>
       </div>
     </Modal>

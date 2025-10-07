@@ -37,3 +37,23 @@ export const verifyEmail = async (token: string) => {
 
   return data;
 }
+
+export const resendVerificationEmail = async (email: string | undefined) => {
+  const response = await fetch(`${import.meta.env.VITE_BASE_BACKEND_URL}/api/auth/resend-verification-email`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+    }),
+    credentials: "include",
+  });
+
+  const data = await response.json();
+  if (!response.ok) {
+    throw data;
+  }
+
+  return data;
+}
