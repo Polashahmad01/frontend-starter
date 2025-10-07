@@ -13,3 +13,9 @@ export const signUpSchema = z.object({
 });
 
 export type SignUpSchema = z.infer<typeof signUpSchema>;
+
+export const verifyEmailSchema = z.object({
+  token: z.string().min(1, "Token is required"),
+});
+
+export type VerifyEmailSchema = z.infer<typeof verifyEmailSchema>;

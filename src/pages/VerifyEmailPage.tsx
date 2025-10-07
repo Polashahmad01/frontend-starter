@@ -1,10 +1,25 @@
 import { useLocation } from "react-router"
+import { useForm } from "react-hook-form";
 import { FaHockeyPuck } from "react-icons/fa";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { verifyEmailSchema, VerifyEmailSchema } from "../schemas";
+import { useVerifyEmail } from "../hooks/useVerifyEmail";
 
 export default function VerifyEmailPage() {
   const location = useLocation();
   const token = new URLSearchParams(location.search).get("token");
-  console.log("token", token);
+  const { register, handleSubmit, formState: { errors } } = useForm<VerifyEmailSchema>({
+    resolver: zodResolver(verifyEmailSchema),
+    mode: "onChange",
+    defaultValues: {
+      token: token || "",
+    }
+  });
+  const { isVerifyEmailPending, verifyEmailMutation } = useVerifyEmail();
+
+  const onSubmit = (formData: VerifyEmailSchema) => {
+    verifyEmailMutation(formData.token);
+  };
 
   return (
     <section className="flex justify-center items-center h-screen py-6 sm:py-0">
@@ -24,7 +39,10 @@ export default function VerifyEmailPage() {
             </p>
           </div>
           <div className="w-full h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mb-6" />
-          <form className="flex flex-col gap-3">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col gap-3"
+          >
             <div className="relative w-full">
               <FaHockeyPuck
                 className="absolute top-1/2 left-6 -translate-y-1/2"
@@ -36,12 +54,19 @@ export default function VerifyEmailPage() {
                 type="text"
                 placeholder="Token"
                 className="w-full border bg-[#f3f3f3] border-[rgb(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
+                {...register("token")}
               />
             </div>
+            {errors.token && (
+              <p className="self-end text-xs -mt-2 text-red-500">
+                {errors.token.message}
+              </p>
+            )}
             <button
-              className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center text-white opacity-80 bg-[#000000] transition-all duration-400 hover:bg-[#f3f3f3] hover:text-[#000000]"
+              disabled={isVerifyEmailPending}
+              className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center text-white opacity-80 bg-[#000000] transition-all duration-400 hover:bg-[#f3f3f3] hover:text-[#000000] disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Verify
+              {isVerifyEmailPending ? "Verifying..." : "Verify"}
             </button>
           </form>
         </div>
