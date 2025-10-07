@@ -1,0 +1,15 @@
+import * as z from "zod";
+
+export const signUpSchema = z.object({
+  email: z.email("Invalid email format").toLowerCase(),
+  password: z
+    .string()
+    .regex(/(?=.*[A-Z])/, "one uppercase letter")
+    .regex(/(?=.*[a-z])/, "one lowercase letter")
+    .regex(/(?=.*\d)/, "one number")
+    .regex(/(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?])/, "one special character")
+    .min(8, "Password must be at least 8 characters long"),
+  fullName: z.string().min(1, "Full name is required"),
+});
+
+export type SignUpSchema = z.infer<typeof signUpSchema>;

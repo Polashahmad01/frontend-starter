@@ -1,10 +1,34 @@
 import { Link } from "react-router";
 import { FaGoogle, FaLock, FaEnvelope } from "react-icons/fa";
+import { IoPersonSharp } from "react-icons/io5";
 import { GoZap } from "react-icons/go";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { signUpSchema, SignUpSchema } from "../schemas";
+import { useSignUp } from "../hooks/useSignUp";
 import { useSignInWithGoogle } from "../hooks/useSignInWithGoogle";
 
 export default function SignUpPage() {
   const { isSignInWithGoogleLoading, signInWithGooglePopup } = useSignInWithGoogle();
+  const { isSignUpPending, signUpWithEmailPasswordMutation } = useSignUp();
+  const { register, handleSubmit, watch, formState: { errors } } = useForm<SignUpSchema>({
+    resolver: zodResolver(signUpSchema),
+    mode: "onChange",
+    defaultValues: {
+      email: "",
+      password: "",
+      fullName: "",
+    }
+  });
+
+  const email = watch("email");
+  const password = watch("password");
+
+  const isShowFullNameField = email && password && email.length > 0 && password.length > 0 && !errors.email && !errors.password;
+
+  const onSubmit = (formData: SignUpSchema) => {
+    signUpWithEmailPasswordMutation(formData);
+  }
 
   return (
     <section className="flex justify-center items-center h-screen py-6 sm:py-0">
@@ -38,7 +62,10 @@ export default function SignUpPage() {
                 <span>{isSignInWithGoogleLoading ? "Signing In..." : "Sign in with Google"}</span>
               </div>
             </button>
-            <form className="flex flex-col gap-3">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="flex flex-col gap-3"
+            >
               <div className="relative w-full">
                 <FaEnvelope
                   className="absolute top-1/2 left-6 -translate-y-1/2"
@@ -50,8 +77,14 @@ export default function SignUpPage() {
                   autoComplete="on"
                   placeholder="E-mail"
                   className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)] rounded-full text-sm py-2 pl-14 pr-4 outline-0"
+                  {...register("email")}
                 />
               </div>
+              {errors.email && (
+                <p className="self-end text-xs -mt-2 text-red-500">
+                  {errors.email.message}
+                </p>
+              )}
               <div className="relative w-full">
                 <FaLock
                   className="absolute top-1/2 left-6 -translate-y-1/2"
@@ -63,13 +96,42 @@ export default function SignUpPage() {
                   className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
                   type="password"
                   placeholder="Password"
+                  {...register("password")}
                 />
               </div>
+              {errors.password && (
+                <p className="self-end text-xs -mt-2 text-red-500">
+                  {errors.password.message}
+                </p>
+              )}
+              {isShowFullNameField && (
+                <>
+                  <div className="relative w-full">
+                    <IoPersonSharp
+                      className="absolute top-1/2 left-6 -translate-y-1/2"
+                      size={17}
+                    />
+                    <input
+                      id="firstName"
+                      className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
+                      type="text"
+                      placeholder="First Name"
+                      {...register("fullName")}
+                    />
+                  </div>
+                  {errors.fullName && (
+                    <p className="self-end text-xs -mt-2 text-red-500">
+                      {errors.fullName.message}
+                    </p>
+                  )}
+                </>
+              )}
               <div className="w-full">
                 <button
+                  disabled={isSignUpPending}
                   className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center text-white opacity-80 bg-[#000000] transition-all duration-400 hover:bg-[#f3f3f3] hover:text-[#000000]"
                 >
-                  Continue
+                  {isSignUpPending ? "Signing Up..." : "Continue"}
                 </button>
               </div>
             </form>
