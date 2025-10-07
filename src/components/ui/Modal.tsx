@@ -5,20 +5,24 @@ import "react-responsive-modal/styles.css";
 interface ModalProps {
   children: ReactNode;
   open: boolean;
+  isShowCloseIcon?: boolean;
   onClose: () => void;
   closeOnOutSideClick?: boolean;
 }
 
-export default function Modal({ open, onClose, children, closeOnOutSideClick }: ModalProps) {
+export default function Modal({ open, onClose, children, closeOnOutSideClick, isShowCloseIcon }: ModalProps) {
   return (
     <ModalComponent
       center
       open={open}
       onClose={onClose}
       closeOnOverlayClick={closeOnOutSideClick}
-      styles={{ modal: {
-        borderRadius: "6px",
-      } }}
+      showCloseIcon={isShowCloseIcon}
+      styles={{
+        modal: {
+          borderRadius: "6px",
+        }
+      }}
     >
       {children}
     </ModalComponent>
