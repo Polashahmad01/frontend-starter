@@ -4,7 +4,7 @@ import { notify } from "../utils/notify";
 import { signInWithGoogle } from "../utils/firebase";
 import { signInWithGoogleAction } from "../services";
 import { useAppDispatch } from "../store/hooks/useStore";
-import { loginSuccess, loginFailure } from "../store/slices/authSlice";
+import { loginSuccess, loginFailure, loginAuthenticate } from "../store/slices/authSlice";
 import { BaseResponseData, BaseErrorResponse } from "../types/appTypes";
 
 export const useSignInWithGoogle = () => {
@@ -20,6 +20,7 @@ export const useSignInWithGoogle = () => {
       const data: BaseResponseData = await signInWithGoogleAction(idToken);
       setIsSignInWithGoogleLoading(false);
       dispatch(loginSuccess(data));
+      dispatch(loginAuthenticate(data));
       notify("success", data.message);
       navigate("/app");
     } catch (error: unknown) {

@@ -5,7 +5,8 @@ import { verifyEmail } from "../services";
 import { useAppDispatch } from "../store/hooks/useStore";
 import {
   loginSuccess,
-  loginFailure
+  loginFailure,
+  loginAuthenticate
 } from "../store/slices/authSlice";
 import { BaseErrorResponse } from "../types";
 
@@ -18,6 +19,7 @@ export const useVerifyEmail = () => {
     mutationFn: verifyEmail,
     onSuccess: (data) => {
       dispatch(loginSuccess(data));
+      dispatch(loginAuthenticate(data));
       notify("success", data.message);
       navigate("/app");
     },

@@ -22,7 +22,6 @@ export const useResendVerificationEmail = () => {
     mutationKey: ["auth"],
     mutationFn: () => resendVerificationEmail(user?.email),
     onSuccess: (data) => {
-      console.log("data", data);
       dispatch(loginSuccess(data));
       notify("success", data.message);
     },

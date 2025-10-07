@@ -15,7 +15,6 @@ export const authSlice = createSlice({
     loginSuccess: (state, action: PayloadAction<BaseResponseData>) => {
       state.user = action.payload.data.user;
       state.accessToken = action.payload.data.accessToken;
-      state.isAuthenticated = true;
       state.message = action.payload.message;
     },
     loginFailure: (state, action: PayloadAction<BaseErrorResponse>) => {
@@ -25,9 +24,15 @@ export const authSlice = createSlice({
       state.message = action.payload.error.message;
       state.error = action.payload.error;
     },
+    loginAuthenticate: (state, action: PayloadAction<BaseResponseData>) => {
+      state.user = action.payload.data.user;
+      state.accessToken = action.payload.data.accessToken;
+      state.message = action.payload.message;
+      state.isAuthenticated = true;
+    },
   }
 });
 
-export const { loginSuccess, loginFailure } = authSlice.actions;
+export const { loginSuccess, loginFailure, loginAuthenticate } = authSlice.actions;
 
 export default authSlice.reducer;
