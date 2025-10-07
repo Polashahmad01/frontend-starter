@@ -1,8 +1,10 @@
 import { Link } from "react-router";
-import { FaGoogle, FaApple, FaLock, FaEnvelope } from "react-icons/fa";
+import { FaGoogle, FaLock, FaEnvelope } from "react-icons/fa";
 import { GoZap } from "react-icons/go";
+import { useSignInWithGoogle } from "../hooks/useSignInWithGoogle";
 
 export default function SignUpPage() {
+  const { isSignInWithGoogleLoading, signInWithGooglePopup } = useSignInWithGoogle();
 
   return (
     <section className="flex justify-center items-center h-screen py-6 sm:py-0">
@@ -27,17 +29,13 @@ export default function SignUpPage() {
           <div className="w-full h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mb-6" />
           <div className="flex flex-col gap-3 mb-6 xl:w-1/2">
             <button
+              onClick={signInWithGooglePopup}
+              disabled={isSignInWithGoogleLoading}
               className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center bg-[#f3f3f3] hover:bg-[#fafafa] disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <div className="flex items-center gap-4">
                 <FaGoogle size={15} />
-                <span>Sign in with Google</span>
-              </div>
-            </button>
-            <button className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center bg-[#f3f3f3] hover:bg-[#fafafa]">
-              <div className="flex items-center gap-4">
-                <FaApple size={20} />
-                <span>Sign in with Apple</span>
+                <span>{isSignInWithGoogleLoading ? "Signing In..." : "Sign in with Google"}</span>
               </div>
             </button>
             <form className="flex flex-col gap-3">
