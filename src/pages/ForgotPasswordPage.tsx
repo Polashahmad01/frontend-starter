@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForgotPassword } from "../hooks/useForgotPassword";
 import { forgotPasswordSchema, ForgotPasswordSchema } from "../schemas";
-
+import ForgotPasswordConfirmation from "../components/ForgotPasswordConfirmation";
 
 export default function ForgotPasswordPage() {
   const { register, handleSubmit, formState: { errors } } = useForm<ForgotPasswordSchema>({
@@ -15,7 +15,11 @@ export default function ForgotPasswordPage() {
       email: "",
     }
   });
-  const { isForgotPasswordPending, forgotPasswordMutation } = useForgotPassword();
+  const {
+    isForgotPasswordPending,
+    isForgotPasswordSuccess,
+    forgotPasswordMutation
+  } = useForgotPassword();
 
   const onSubmit = (formData: ForgotPasswordSchema) => {
     forgotPasswordMutation(formData);
@@ -23,6 +27,7 @@ export default function ForgotPasswordPage() {
 
   return (
     <section className="flex justify-center items-center h-screen py-6 sm:py-0">
+      {isForgotPasswordSuccess && <ForgotPasswordConfirmation />}
       <article className="hidden md:flex md:justify-center md:items-center md:flex-1 bg-[#f3f3f3] h-full">
         <h1 className="text-5xl font-bold opacity-80">Forgot Password</h1>
       </article>

@@ -7,7 +7,8 @@ export const useForgotPassword = () => {
 
   const {
     mutateAsync: forgotPasswordMutation,
-    isPending: isForgotPasswordPending
+    isPending: isForgotPasswordPending,
+    isSuccess: isForgotPasswordSuccess
   } = useMutation({
     mutationKey: ["auth"],
     mutationFn: forgotPassword,
@@ -22,6 +23,7 @@ export const useForgotPassword = () => {
 
   return {
     isForgotPasswordPending,
+    isForgotPasswordSuccess,
     forgotPasswordMutation
   }
 }
