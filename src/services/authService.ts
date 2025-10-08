@@ -1,7 +1,8 @@
 import {
   SignInSchema,
   SignUpSchema,
-  ForgotPasswordSchema
+  ForgotPasswordSchema,
+  ResetPasswordSchema
 } from "../schemas"
 
 export const signUpWithEmailPassword = async (formData: SignUpSchema) => {
@@ -98,3 +99,20 @@ export const forgotPassword = async (formData: ForgotPasswordSchema) => {
   return data;
 }
 
+export const resetPassword = async (formData: ResetPasswordSchema) => {
+  const response = await fetch(`${import.meta.env.VITE_BASE_BACKEND_URL}/api/auth/reset-password`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(formData),
+    credentials: "include"
+  });
+
+  const data = await response.json();
+  if (!response.ok) {
+    throw data;
+  }
+
+  return data;
+}
