@@ -1,8 +1,27 @@
 import { Link } from "react-router";
 import { GoZap } from "react-icons/go";
-import { FaGoogle, FaApple, FaLock, FaEnvelope } from "react-icons/fa";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FaGoogle, FaLock, FaEnvelope } from "react-icons/fa";
+import { signInSchema, SignInSchema } from "../schemas";
+import { useSignIn } from "../hooks/useSignIn";
+import { useSignInWithGoogle } from "../hooks/useSignInWithGoogle";
 
 export default function SignInPage() {
+  const { isSignInPending, signInWithEmailPasswordMutation } = useSignIn();
+  const { isSignInWithGoogleLoading, signInWithGooglePopup } = useSignInWithGoogle();
+  const { register, handleSubmit, formState: { errors } } = useForm<SignInSchema>({
+    resolver: zodResolver(signInSchema),
+    mode: "onChange",
+    defaultValues: {
+      email: "",
+      password: "",
+    }
+  });
+
+  const onSubmit = (data: SignInSchema) => {
+    signInWithEmailPasswordMutation(data);
+  }
 
   return (
     <section className="flex justify-center items-center h-screen py-6 sm:py-0">
@@ -27,20 +46,17 @@ export default function SignInPage() {
           <div className="w-full h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mb-6" />
           <div className="flex flex-col gap-3 mb-6 xl:w-1/2">
             <button
+              onClick={signInWithGooglePopup}
+              disabled={isSignInWithGoogleLoading}
               className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center bg-[#f3f3f3] hover:bg-[#fafafa] disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <div className="flex items-center gap-4">
                 <FaGoogle size={15} />
-                <span>Sign in with Google</span>
-              </div>
-            </button>
-            <button className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center bg-[#f3f3f3] hover:bg-[#fafafa]">
-              <div className="flex items-center gap-4">
-                <FaApple size={20} />
-                <span>Sign in with Apple</span>
+                <span>{isSignInWithGoogleLoading ? "Signing In..." : "Sign in with Google"}</span>
               </div>
             </button>
             <form
+              onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col gap-3"
             >
               <div className="relative w-full">
@@ -54,8 +70,14 @@ export default function SignInPage() {
                   type="email"
                   className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)] rounded-full text-sm py-2 pl-14 pr-4 outline-0"
                   placeholder="E-mail"
+                  {...register("email")}
                 />
               </div>
+              {errors.email && (
+                <p className="self-end text-xs -mt-2 text-red-500">
+                  {errors.email.message}
+                </p>
+              )}
               <div className="relative w-full">
                 <FaLock
                   className="absolute top-1/2 left-6 -translate-y-1/2"
@@ -67,13 +89,20 @@ export default function SignInPage() {
                   type="password"
                   placeholder="Password"
                   className="w-full border bg-[#f3f3f3] border-[rgb(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
+                  {...register("password")}
                 />
               </div>
+              {errors.password && (
+                <p className="self-end text-xs -mt-2 text-red-500">
+                  {errors.password.message}
+                </p>
+              )}
               <div className="w-full">
                 <button
-                  className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center text-white opacity-80 bg-[#000000] transition-all duration-400 hover:bg-[#f3f3f3] hover:text-[#000000]"
+                  disabled={isSignInPending}
+                  className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center text-white opacity-80 bg-[#000000] transition-all duration-400 hover:bg-[#f3f3f3] hover:text-[#000000] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Continue
+                  {isSignInPending ? "Signing In..." : "Continue"}
                 </button>
               </div>
             </form>

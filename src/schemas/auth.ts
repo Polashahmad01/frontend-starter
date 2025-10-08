@@ -19,3 +19,16 @@ export const verifyEmailSchema = z.object({
 });
 
 export type VerifyEmailSchema = z.infer<typeof verifyEmailSchema>;
+
+export const signInSchema = z.object({
+  email: z.email("Invalid email format").toLowerCase(),
+  password: z
+    .string()
+    .regex(/(?=.*[A-Z])/, "one uppercase letter")
+    .regex(/(?=.*[a-z])/, "one lowercase letter")
+    .regex(/(?=.*\d)/, "one number")
+    .regex(/(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?])/, "one special character")
+    .min(8, "Password must be at least 8 characters long"),
+});
+
+export type SignInSchema = z.infer<typeof signInSchema>;
