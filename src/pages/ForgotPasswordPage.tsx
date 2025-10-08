@@ -1,8 +1,25 @@
 import { Link } from "react-router";
 import { GoZap } from "react-icons/go";
 import { FaEnvelope } from "react-icons/fa";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForgotPassword } from "../hooks/useForgotPassword";
+import { forgotPasswordSchema, ForgotPasswordSchema } from "../schemas";
+
 
 export default function ForgotPasswordPage() {
+  const { register, handleSubmit, formState: { errors } } = useForm<ForgotPasswordSchema>({
+    resolver: zodResolver(forgotPasswordSchema),
+    mode: "onChange",
+    defaultValues: {
+      email: "",
+    }
+  });
+  const { isForgotPasswordPending, forgotPasswordMutation } = useForgotPassword();
+
+  const onSubmit = (formData: ForgotPasswordSchema) => {
+    forgotPasswordMutation(formData);
+  }
 
   return (
     <section className="flex justify-center items-center h-screen py-6 sm:py-0">
@@ -27,7 +44,10 @@ export default function ForgotPasswordPage() {
           </div>
           <div className="w-full h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mb-6" />
           <div className="flex flex-col gap-3 mb-6 xl:w-1/2">
-            <form className="flex flex-col gap-3">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="flex flex-col gap-3"
+            >
               <div className="relative w-full">
                 <FaEnvelope
                   className="absolute top-1/2 left-6 -translate-y-1/2"
@@ -37,13 +57,20 @@ export default function ForgotPasswordPage() {
                   type="email"
                   placeholder="E-mail"
                   className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)] rounded-full text-sm py-2 pl-14 pr-4 outline-0"
+                  {...register("email")}
                 />
               </div>
+              {errors.email && (
+                <p className="self-end text-xs -mt-2 text-red-500">
+                  {errors.email.message}
+                </p>
+              )}
               <div className="w-full">
                 <button
-                  className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center text-white opacity-80 bg-[#000000] transition-all duration-400 hover:bg-[#f3f3f3] hover:text-[#000000]"
+                  disabled={isForgotPasswordPending}
+                  className="w-full cursor-pointer rounded-full px-6 py-2 flex items-center justify-center text-white opacity-80 bg-[#000000] transition-all duration-400 hover:bg-[#f3f3f3] hover:text-[#000000] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Reset Link
+                  {isForgotPasswordPending ? "Sending..." : "Send Reset Link"}
                 </button>
               </div>
             </form>

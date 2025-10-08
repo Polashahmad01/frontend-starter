@@ -1,4 +1,8 @@
-import { SignInSchema, SignUpSchema } from "../schemas"
+import {
+  SignInSchema,
+  SignUpSchema,
+  ForgotPasswordSchema
+} from "../schemas"
 
 export const signUpWithEmailPassword = async (formData: SignUpSchema) => {
   const response = await fetch(`${import.meta.env.VITE_BASE_BACKEND_URL}/api/auth/register`, {
@@ -75,3 +79,22 @@ export const signInWithEmailPassword = async (formData: SignInSchema) => {
 
   return data;
 }
+
+export const forgotPassword = async (formData: ForgotPasswordSchema) => {
+  const response = await fetch(`${import.meta.env.VITE_BASE_BACKEND_URL}/api/auth/forgot-password`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(formData),
+    credentials: "include"
+  });
+
+  const data = await response.json();
+  if (!response.ok) {
+    throw data;
+  }
+
+  return data;
+}
+
