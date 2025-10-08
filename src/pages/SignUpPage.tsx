@@ -7,11 +7,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpSchema, SignUpSchema } from "../schemas";
 import SignUpConfirmation from "../components/SignUpConfirmation";
 import { useSignUp } from "../hooks/useSignUp";
+import { useInput } from "../hooks/useInput";
 import { useSignInWithGoogle } from "../hooks/useSignInWithGoogle";
 
 export default function SignUpPage() {
   const { isSignInWithGoogleLoading, signInWithGooglePopup } = useSignInWithGoogle();
   const { isSignUpSuccess, isSignUpPending, signUpWithEmailPasswordMutation } = useSignUp();
+  const { inputType, toggleInputType } = useInput("password");
   const { register, handleSubmit, watch, formState: { errors } } = useForm<SignUpSchema>({
     resolver: zodResolver(signUpSchema),
     mode: "onChange",
@@ -96,9 +98,11 @@ export default function SignUpPage() {
                   id="password"
                   autoComplete="new-password"
                   className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
-                  type="password"
                   placeholder="Password"
                   {...register("password")}
+                  type={inputType}
+                  onFocus={() => toggleInputType()}
+                  onBlur={() => toggleInputType()}
                 />
               </div>
               {errors.password && (

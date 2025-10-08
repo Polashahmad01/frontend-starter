@@ -5,12 +5,14 @@ import { useLocation } from "react-router";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { resetPasswordSchema, ResetPasswordSchema } from "../schemas/auth";
+import { useInput } from "../hooks/useInput";
 import { useResetPassword } from "../hooks/useResetPassword";
 
 export default function ResetPasswordPage() {
   const location = useLocation();
   const token = new URLSearchParams(location.search).get("token");
   const { resetPasswordPending, resetPasswordMutation } = useResetPassword();
+  const { inputType, toggleInputType } = useInput("password");
   const { register, handleSubmit, formState: { errors } } = useForm<ResetPasswordSchema>({
     resolver: zodResolver(resetPasswordSchema),
     mode: "onChange",
@@ -57,10 +59,12 @@ export default function ResetPasswordPage() {
                   size={16}
                 />
                 <input
-                  type="password"
                   placeholder="New Password"
                   className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
                   {...register("password")}
+                  type={inputType}
+                  onFocus={() => toggleInputType()}
+                  onBlur={() => toggleInputType()}
                 />
               </div>
               {errors.password && (
@@ -75,9 +79,11 @@ export default function ResetPasswordPage() {
                 />
                 <input
                   className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
-                  type="password"
                   placeholder="Confirm Password"
                   {...register("confirmPassword")}
+                  type={inputType}
+                  onFocus={() => toggleInputType()}
+                  onBlur={() => toggleInputType()}
                 />
               </div>
               {errors.confirmPassword && (

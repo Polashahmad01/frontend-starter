@@ -5,10 +5,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FaGoogle, FaLock, FaEnvelope } from "react-icons/fa";
 import { signInSchema, SignInSchema } from "../schemas";
 import { useSignIn } from "../hooks/useSignIn";
+import { useInput } from "../hooks/useInput";
 import { useSignInWithGoogle } from "../hooks/useSignInWithGoogle";
 
 export default function SignInPage() {
   const { isSignInPending, signInWithEmailPasswordMutation } = useSignIn();
+  const { inputType, toggleInputType } = useInput("password");
   const { isSignInWithGoogleLoading, signInWithGooglePopup } = useSignInWithGoogle();
   const { register, handleSubmit, formState: { errors } } = useForm<SignInSchema>({
     resolver: zodResolver(signInSchema),
@@ -86,10 +88,12 @@ export default function SignInPage() {
                 <input
                   id="password"
                   autoComplete="on"
-                  type="password"
                   placeholder="Password"
                   className="w-full border bg-[#f3f3f3] border-[rgb(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
                   {...register("password")}
+                  type={inputType}
+                  onFocus={() => toggleInputType()}
+                  onBlur={() => toggleInputType()}
                 />
               </div>
               {errors.password && (
