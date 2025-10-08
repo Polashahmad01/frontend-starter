@@ -27,7 +27,6 @@ export const useResendVerificationEmail = () => {
     },
     onError: (error: unknown) => {
       const errorData = error as BaseErrorResponse;
-      console.log("errorData", errorData);
       dispatch(loginFailure(errorData));
       notify("error", errorData.error.message);
     }

@@ -1,13 +1,14 @@
-// import { lazy } from "react";
+import { lazy } from "react";
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router";
 import Layout from "../layouts/Layout";
 import AuthLayout from "../layouts/AuthLayout";
-// import LazyWrapper from "../components/LazyWrapper";
+import LazyWrapper from "../components/LazyWrapper";
 import appRoutes from "./AppRoutes";
 import authRoutes from "./AuthRoutes";
 import legalRoutes from "./LegalRoutes";
 
 // Lazy load components for better performance
+const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));
 
 // Create router with improved structure
 const router = createBrowserRouter([
@@ -59,6 +60,18 @@ const router = createBrowserRouter([
     })),
   },
   // 404 fallback
+  {
+    path: "*",
+    element: (
+      <LazyWrapper>
+        <NotFoundPage />
+      </LazyWrapper>
+    ),
+    handle: {
+      title: "Page Not Found",
+      description: "The requested page could not be found",
+    }
+  }
 ]);
 
 export default function AppRouter() {
