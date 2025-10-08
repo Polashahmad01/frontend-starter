@@ -116,3 +116,17 @@ export const resetPassword = async (formData: ResetPasswordSchema) => {
 
   return data;
 }
+
+export const logout = async () => {
+  const response = await fetch(`${import.meta.env.VITE_BASE_BACKEND_URL}/api/auth/logout`, {
+    method: "POST",
+    credentials: "include"
+  });
+
+  const data = await response.json();
+  if (!response.ok) {
+    throw data;
+  }
+
+  return data;
+}
