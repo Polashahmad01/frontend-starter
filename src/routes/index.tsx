@@ -10,13 +10,15 @@ import legalRoutes from "./LegalRoutes";
 
 // Lazy load components for better performance
 const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));
+const ErrorPage = lazy(() => import("../pages/ErrorPage"));
 
 // Create router with improved structure
 const router = createBrowserRouter([
   // Root redirect - smart redirect based on auth state
   {
     path: "/",
-    element: <Navigate to="/app" replace />
+    element: <Navigate to="/app" replace />,
+    errorElement: <ErrorPage />
   },
   // Protected app routes
   {
@@ -35,6 +37,7 @@ const router = createBrowserRouter([
         requiresAuth: route.requiresAuth,
       },
     })),
+    errorElement: <ErrorPage />
   },
 
   // Auth routes
@@ -49,6 +52,7 @@ const router = createBrowserRouter([
         description: route.description,
       },
     })),
+    errorElement: <ErrorPage />
   },
 
   // Legal routes
@@ -63,6 +67,7 @@ const router = createBrowserRouter([
         description: route.description,
       },
     })),
+    errorElement: <ErrorPage />
   },
   // 404 fallback
   {
@@ -75,7 +80,8 @@ const router = createBrowserRouter([
     handle: {
       title: "Page Not Found",
       description: "The requested page could not be found",
-    }
+    },
+    errorElement: <ErrorPage />,
   }
 ]);
 
