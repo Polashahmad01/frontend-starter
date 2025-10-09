@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider, Navigate } from "react-router";
 import Layout from "../layouts/Layout";
 import AuthLayout from "../layouts/AuthLayout";
 import LazyWrapper from "../components/LazyWrapper";
+import ProtectedRoute from "../components/ProtectedRoute";
 import appRoutes from "./AppRoutes";
 import authRoutes from "./AuthRoutes";
 import legalRoutes from "./LegalRoutes";
@@ -12,15 +13,19 @@ const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));
 
 // Create router with improved structure
 const router = createBrowserRouter([
-  // Root redirect
+  // Root redirect - smart redirect based on auth state
   {
     path: "/",
-    element: <Navigate to="/sign-in" replace />
+    element: <Navigate to="/app" replace />
   },
   // Protected app routes
   {
     path: "/app",
-    element: <Layout />,
+    element: (
+      <ProtectedRoute>
+        <Layout />
+      </ProtectedRoute>
+    ),
     children: appRoutes.map((route) => ({
       path: route.path,
       element: route.element,

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { useMutation } from "@tanstack/react-query";
 import { notify } from "../utils/notify";
 import { useAppDispatch } from "../store/hooks/useStore";
@@ -12,6 +12,7 @@ import { BaseErrorResponse } from "../types";
 
 export const useSignIn = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useAppDispatch();
 
   const {
@@ -24,7 +25,10 @@ export const useSignIn = () => {
       dispatch(loginSuccess(data));
       dispatch(loginAuthenticate(data));
       notify("success", data.message);
-      navigate("/app");
+      
+      // Redirect to the intended route or default to /app
+      const from = location.state?.from?.pathname || "/app";
+      navigate(from, { replace: true });
     },
     onError: (error: unknown) => {
       const errorData = error as BaseErrorResponse;

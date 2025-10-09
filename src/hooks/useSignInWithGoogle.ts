@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { notify } from "../utils/notify";
 import { signInWithGoogle } from "../utils/firebase";
 import { signInWithGoogleAction } from "../services";
@@ -9,6 +9,7 @@ import { BaseResponseData, BaseErrorResponse } from "../types/appTypes";
 
 export const useSignInWithGoogle = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useAppDispatch();
   const [isSignInWithGoogleLoading, setIsSignInWithGoogleLoading] = useState(false);
 
@@ -22,7 +23,10 @@ export const useSignInWithGoogle = () => {
       dispatch(loginSuccess(data));
       dispatch(loginAuthenticate(data));
       notify("success", data.message);
-      navigate("/app");
+
+      // Redirect to the intended route or default to /app
+      const from = location.state?.from?.pathname || "/app";
+      navigate(from, { replace: true });
     } catch (error: unknown) {
       setIsSignInWithGoogleLoading(false);
       if (error && typeof error === 'object' && 'error' in error) {

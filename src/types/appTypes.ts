@@ -58,4 +58,5 @@ export interface AuthState {
     message: string;
   };
   message: string | null;
+  tokenExpiry: number | null;
 }
