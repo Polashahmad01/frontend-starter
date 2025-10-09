@@ -118,10 +118,10 @@ export default function SignUpPage() {
                       size={17}
                     />
                     <input
-                      id="firstName"
+                      id="fullName"
                       className="w-full border bg-[#f3f3f3] border-[rgba(212,212,212,0.6)]  rounded-full text-sm py-2 pl-14 pr-4 outline-0"
                       type="text"
-                      placeholder="First Name"
+                      placeholder="Full Name"
                       {...register("fullName")}
                     />
                   </div>
