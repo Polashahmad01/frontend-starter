@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode, useEffect } from "react";
 
 interface ModalProps {
   children: ReactNode;
@@ -15,34 +15,31 @@ export default function Modal({
   closeOnOutSideClick = true,
   isShowCloseIcon = true,
 }: ModalProps) {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-
   useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-
-    dialog.showModal();
-
-    const handleDialogClose = () => {
-      onClose();
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
     };
 
-    dialog.addEventListener("close", handleDialogClose);
-    return () => dialog.removeEventListener("close", handleDialogClose);
-  }, [onClose]);
+    if (open) {
+      document.addEventListener("keydown", handleKeyDown);
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
+    };
+  }, [open, onClose]);
 
   const handleClose = () => {
     onClose();
   };
 
-  const handleBackdropClick = (e: React.MouseEvent<HTMLDialogElement>) => {
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (closeOnOutSideClick && e.target === e.currentTarget) {
-      handleClose();
-    }
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDialogElement>) => {
-    if (e.key === "Escape") {
       handleClose();
     }
   };
@@ -52,16 +49,34 @@ export default function Modal({
   }
 
   return (
-    <dialog
-      ref={dialogRef}
+    <div
       onClick={handleBackdropClick}
-      onKeyDown={handleKeyDown}
-      className="backdrop:bg-black/50 backdrop:backdrop-blur-sm bg-transparent p-0 max-w-none max-h-none w-full h-full flex items-center justify-center border-0 outline-0"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
     >
-      <div className="bg-white rounded-md shadow-lg max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto">
-        {isShowCloseIcon && <button onClick={handleClose}>Close</button>}
+      <div className="bg-white rounded-md shadow-lg max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto relative">
+        {isShowCloseIcon && (
+          <button
+            onClick={handleClose}
+            className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
+            aria-label="Close modal"
+          >
+            <svg
+              className="w-5 h-5 text-gray-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        )}
         <div className="p-6">{children}</div>
       </div>
-    </dialog>
+    </div>
   );
 }

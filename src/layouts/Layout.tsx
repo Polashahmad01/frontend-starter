@@ -20,6 +20,9 @@ export default function Layout() {
               fontWeight: 500,
             },
           }}
+          containerStyle={{
+            zIndex: 60,
+          }}
         />
       </main>
     </div>

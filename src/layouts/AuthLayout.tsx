@@ -19,6 +19,9 @@ export default function AuthLayout() {
             fontWeight: 500,
           },
         }}
+        containerStyle={{
+          zIndex: 60,
+        }}
       />
     </main>
   );
