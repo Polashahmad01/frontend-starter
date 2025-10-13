@@ -11,27 +11,40 @@ import { useInput } from "../hooks/useInput";
 import { useSignInWithGoogle } from "../hooks/useSignInWithGoogle";
 
 export default function SignUpPage() {
-  const { isSignInWithGoogleLoading, signInWithGooglePopup } = useSignInWithGoogle();
-  const { isSignUpSuccess, isSignUpPending, signUpWithEmailPasswordMutation } = useSignUp();
+  const { isSignInWithGoogleLoading, signInWithGooglePopup } =
+    useSignInWithGoogle();
+  const { isSignUpSuccess, isSignUpPending, signUpWithEmailPasswordMutation } =
+    useSignUp();
   const { inputType, toggleInputType } = useInput("password");
-  const { register, handleSubmit, watch, formState: { errors } } = useForm<SignUpSchema>({
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<SignUpSchema>({
     resolver: zodResolver(signUpSchema),
     mode: "onChange",
     defaultValues: {
       email: "",
       password: "",
       fullName: "",
-    }
+    },
   });
 
   const email = watch("email");
   const password = watch("password");
 
-  const isShowFullNameField = email && password && email.length > 0 && password.length > 0 && !errors.email && !errors.password;
+  const isShowFullNameField =
+    email &&
+    password &&
+    email.length > 0 &&
+    password.length > 0 &&
+    !errors.email &&
+    !errors.password;
 
   const onSubmit = (formData: SignUpSchema) => {
     signUpWithEmailPasswordMutation(formData);
-  }
+  };
 
   return (
     <section className="flex justify-center items-center h-screen py-6 sm:py-0">
@@ -63,7 +76,11 @@ export default function SignUpPage() {
             >
               <div className="flex items-center gap-4">
                 <FaGoogle size={15} />
-                <span>{isSignInWithGoogleLoading ? "Signing In..." : "Sign in with Google"}</span>
+                <span>
+                  {isSignInWithGoogleLoading
+                    ? "Signing In..."
+                    : "Sign in with Google"}
+                </span>
               </div>
             </button>
             <form

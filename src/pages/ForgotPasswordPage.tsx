@@ -8,22 +8,26 @@ import { forgotPasswordSchema, ForgotPasswordSchema } from "../schemas";
 import ForgotPasswordConfirmation from "../components/ForgotPasswordConfirmation";
 
 export default function ForgotPasswordPage() {
-  const { register, handleSubmit, formState: { errors } } = useForm<ForgotPasswordSchema>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ForgotPasswordSchema>({
     resolver: zodResolver(forgotPasswordSchema),
     mode: "onChange",
     defaultValues: {
       email: "",
-    }
+    },
   });
   const {
     isForgotPasswordPending,
     isForgotPasswordSuccess,
-    forgotPasswordMutation
+    forgotPasswordMutation,
   } = useForgotPassword();
 
   const onSubmit = (formData: ForgotPasswordSchema) => {
     forgotPasswordMutation(formData);
-  }
+  };
 
   return (
     <section className="flex justify-center items-center h-screen py-6 sm:py-0">
